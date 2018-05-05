@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './style.css';
 
 import Block from './../Block';
-import Home from './../Home';
+import Account from './../Account';
 import IssuedAssets from './../IssuedAssets';
 import Witness from './../Witness';
 import Nodes from './../Nodes';
@@ -20,21 +20,22 @@ class App extends Component {
         <div className="App-nav">
           <Router>
             <div>
-              <Link to="/">Home</Link>
-              <Link to="/block">Block</Link>
-              <Link to="/witness">Witness</Link>
-              <Link to="/issuedassets">IssuedAssets</Link>
+              <p><Link to="/account">Account</Link></p> 
+              <p><Link to="/block">Block</Link></p> 
+              <p><Link to="/witness">Witness</Link></p> 
+              <p><Link to="/issuedassets">IssuedAssets</Link></p> 
 
 
-              <Route exact path="/" component={Home}/>
+              <Route exact path="/account" component={Account}/>
               <Route exact path="/witness" component={Witness}/>
               <Route exact path="/issuedassets" component={IssuedAssets}/>
+              <Route exact path="/block" component={Block}/>
 
 
 
-              <Route exact path="/block" render={() => (
+              {/*<Route exact path="/block" render={() => (
                 <h3>Please select a blockHash.</h3>
-              )}/>
+              )}/>*/}
 
             {/*  <Route exact path="/witness" render={() => (
                 <h3>Please select a blockHash.</h3>

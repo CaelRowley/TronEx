@@ -58,8 +58,8 @@ class IssuedAssets extends Component {
               console.log('success: '+ response);
               var output = '';
               for (var i = 0; i < response.hits.hits.length; i++) {
-                     output += '<div class="jumbotron panel-default">'
-                 output += '<h2>' + "Issued Assets: " + response.hits.hits[i]._id + '</h2>';
+                 output += '<div class="jumbotron panel-default">'
+                 output += '<h2>' + "Issued Assets: " + response.hits.hits[i]._source.name + '</h2>';
                  output += '<ul>'
                  output += "<li>ownerAddress: " + response.hits.hits[i]._source.owneraddress + '</li></br>';
                  output += "<li>name: " + response.hits.hits[i]._source.name + '</li></br>';
