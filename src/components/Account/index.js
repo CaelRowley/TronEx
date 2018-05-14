@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import './style.css';
-import $ from 'jquery'
 
-import Service from './../Service/service.js';
+import Service from './../utils/service.js';
 
 class Account extends Component {
 
     render() {
-        this.getAccount()
+        this.getAccount();
         return (
+            
             <div className="Account">
-                <h2>Account page</h2>
+                <div id="searchCount"></div>
                 <div id="searchResult"></div>
+
             </div>
 
         );
@@ -29,22 +30,37 @@ class Account extends Component {
 
     _displayResponse(response){
         var output = "";
-        // for (var i = 0; i < response.hits.hits.length; i++) {
-        //     output += '<div class="jumbotron panel-default">'
-        //     output += '<h2>' + "WITNESS: " + response.hits.hits[i]._id + '</h2>';
-        //     output += '<ul>'
-        //     output += "<li>address: " + response.hits.hits[i]._source.address + '</li></br>';
-        //     output += "<li>voteCount: " + response.hits.hits[i]._source.votecount + '</li></br>';
-        //     output += "<li>pubKey: " + response.hits.hits[i]._source.pubkey + '</li></br>';
-        //     output += "<li>url: " + response.hits.hits[i]._source.url + '</li></br>';
-        //     output += "<li>totalMissed: " + response.hits.hits[i]._source.totalmissed + '</li></br>';
-        //     output += "<li>latestBlockNum: " + response.hits.hits[i]._source.latestblocknum + '</li></br>';
-        //     output += "<li>latestSlotNum: " + response.hits.hits[i]._source.latestslotnum + '</li></br>';
-        //     output += "<li>isJobs: " + response.hits.hits[i]._source.isjobs + '</li></br>';
-        //     output += '</ul>';
-        //     output += '</div>';
-        // }
-        //document.getElementById('searchCount').innerHTML = '<h2>Showing ' + response.hits.hits.length + ' results</h2>';
+        for (var i = 0; i < response.hits.hits.length; i++) {
+            output += '<div class="jumbotron panel-default">'
+            output += '<h2>' + "ACCOUNT: " + response.hits.hits[i]._id + '</h2>';
+            output += '<ul>'
+            output += "<li>accountname: " + response.hits.hits[i]._source.accountname + '</li></br>';
+            output += "<li>type: " + response.hits.hits[i]._source.type + '</li></br>';
+            output += "<li>address: " + response.hits.hits[i]._source.address + '</li></br>';
+            output += "<li>balance: " + response.hits.hits[i]._source.balance + '</li></br>';
+            output += "<li>latestoprationtime: " + response.hits.hits[i]._source.latestoprationtime + '</li></br>';
+            output += '</ul>';
+            output += '</div>';
+
+            if(response.hits.hits[i]._source.voteslist){
+                output += "voteslist: " + '</br>';
+                for(var j in response.hits.hits[i]._source.voteslist){
+                    output += "___voteslist " + j + "___" + '</br>';
+                    output += " - voteaddress: " + response.hits.hits[i]._source.voteslist[j].voteaddress + '</br>';
+                    output += " - votecount: " + response.hits.hits[i]._source.voteslist[j].votecount + '</br>';
+                }
+            }
+
+            if(response.hits.hits[i]._source.assetmap){
+                output += "assetmap: " + '</br>';
+                for(var j in response.hits.hits[i]._source.assetmap){
+                    output += "___assetmap " + j + "___" + '</br>';
+                    output += " - name: " + j + '</br>';
+                    output += " - ammount: " + response.hits.hits[i]._source.assetmap[j] + '</br>';
+                }
+            }
+        }
+        document.getElementById('searchCount').innerHTML = '<h3 class="rightAlignText">' + response.hits.hits.length + ' results</h3>';
         document.getElementById('searchResult').innerHTML = output;
     }
 }

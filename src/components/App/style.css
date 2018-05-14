@@ -8,10 +8,15 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  background-color: #333333;
   color: white;
+}
+
+table {
+    background-color: #555555;
+    color: white;
+    font-size: medium;
+    width: 100%;
 }
 
 .App-title {
@@ -26,3 +31,33 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.center {
+    text-align: center;
+    color: white;
+    display: block;
+}
+
+td, th {
+    padding: 8px;
+}
+
+
+html {
+  box-sizing: border-box;
+}
+
+.tronText {
+  text-align: left;
+  padding: 20px;
+}
+
+/*h2 {
+    font-family: arial, sans-serif;
+}*/
+
+/*#999999
+#777777
+#555555
+#333333
+#111111*/
