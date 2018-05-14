@@ -7,6 +7,10 @@ import Account from './../Account';
 import IssuedAssets from './../IssuedAssets';
 import Witness from './../Witness';
 import Nodes from './../Nodes';
+
+import Visualisation from './../Visualisation';
+import BlockExplorer from './../BlockExplorer';
+
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends Component {
@@ -14,24 +18,23 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>TronEx</h2>
+          <h2 className="tronText container">TronEx</h2>
         </div>
-        <div className="App-nav">
+        
+        <div className="App-nav container">
           <Router>
             <div>
-              <p><Link to="/account">Account</Link></p> 
-              <p><Link to="/block">Block</Link></p> 
-              <p><Link to="/witness">Witness</Link></p> 
-              <p><Link to="/issuedassets">IssuedAssets</Link></p> 
+            <table className="tableHover">
+              <tbody>
+                <tr>
+                  <td><Link className="center" to="/visualisation">Visualisation</Link></td>
+                  <td><Link className="center" to="/blockchainexplorer">BlockExplorer</Link></td>
+                </tr>
+              </tbody>
+            </table>
 
-
-              <Route exact path="/account" component={Account}/>
-              <Route exact path="/witness" component={Witness}/>
-              <Route exact path="/issuedassets" component={IssuedAssets}/>
-              <Route exact path="/block" component={Block}/>
-
-
+              <Route exact path="/visualisation" component={Visualisation}/>
+              <Route exact path="/blockchainexplorer" component={BlockExplorer}/>
 
               {/*<Route exact path="/block" render={() => (
                 <h3>Please select a blockHash.</h3>
@@ -44,6 +47,7 @@ class App extends Component {
               {/*<Route path="/block/:blockHash" component={Block}/>*/}
             </div>
           </Router>
+         {/* </div>*/}
         </div>
       </div>
     );

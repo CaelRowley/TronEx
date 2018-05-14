@@ -11,7 +11,7 @@ class Service {
         // var field = "";
 
         var body = {
-           'size': 100
+           'size': 500
         };
 
         var query = {
@@ -43,7 +43,6 @@ class Service {
             dataType: 'json',
             data: JSON.stringify(body),
             success: function(response){
-                console.log('success: '+ response);
                 dfd.resolve(response);
             }/*,
             error: function(response){

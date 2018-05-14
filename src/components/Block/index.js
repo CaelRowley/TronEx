@@ -1,14 +1,31 @@
 import React, { Component } from 'react';
 import './style.css';
 
-import Service from './../Service/service.js';
+import Service from './../utils/service.js';
 
 class Block extends Component {
+	constructor(props){
+		super(props);
+
+		this.state = {
+			username:"temp"
+		}
+
+		this.handleChange = this.handleChange.bind(this);
+	}
+	
+	handleChange(e){
+		this.setState({
+			username: e.target.value
+		})
+	}
+
+
 	render() {
 		this.getBlocks();
 		return (
 			<div className="Block">
-				<h2>Block Info</h2>
+				<div id="searchCount"></div>
 				<div id="searchResult"></div>
 			</div>
 		);
@@ -27,18 +44,19 @@ class Block extends Component {
     _displayResponse(response){
         var output = "";
         for (var i = 0; i < response.hits.hits.length; i++) {
+        	output += '<div class="jumbotron panel-default">'
 			output += '<h2>' + "BLOCK: " + response.hits.hits[i]._id + '</h2>';
 			output += "parentHash: " + response.hits.hits[i]._source.parentHash + '</br>';
 			output += "witnessAddress: " + response.hits.hits[i]._source.witnessAddress + '</br>';
 			output += "transactionsCount: " + response.hits.hits[i]._source.transactionsCount + '</br>';
 
 			output += "contractType: " + '</br>';
-			output += " - accountcreatecontract: " + response.hits.hits[i]._source.contractType.contracttypes.accountcreatecontract + '</br>';
-			output += " - transfercontract: " + response.hits.hits[i]._source.contractType.contracttypes.transfercontract + '</br>';
-			output += " - transferassetcontract: " + response.hits.hits[i]._source.contractType.contracttypes.transferassetcontract + '</br>';
-			output += " - voteassetcontract: " + response.hits.hits[i]._source.contractType.contracttypes.voteassetcontract + '</br>';
-			output += " - votewitnesscontract: " + response.hits.hits[i]._source.contractType.contracttypes.votewitnesscontract + '</br>';
-			output += " - witnesscreatecontract: " + response.hits.hits[i]._source.contractType.contracttypes.witnesscreatecontract + '</br>';
+			output += " - accountcreatecontract: " + response.hits.hits[i]._source.contractType.types.accountcreatecontract + '</br>';
+			output += " - transfercontract: " + response.hits.hits[i]._source.contractType.types.transfercontract + '</br>';
+			output += " - transferassetcontract: " + response.hits.hits[i]._source.contractType.types.transferassetcontract + '</br>';
+			output += " - voteassetcontract: " + response.hits.hits[i]._source.contractType.types.voteassetcontract + '</br>';
+			output += " - votewitnesscontract: " + response.hits.hits[i]._source.contractType.types.votewitnesscontract + '</br>';
+			output += " - witnesscreatecontract: " + response.hits.hits[i]._source.contractType.types.witnesscreatecontract + '</br>';
 
 			if(response.hits.hits[i]._source.transactions){
 				output += "transactions: " + '</br>';
@@ -49,8 +67,9 @@ class Block extends Component {
 					output += " - amount: " + response.hits.hits[i]._source.transactions[j].amount + '</br>';
 				}
 			}
+			output += "</div>"
         }
-        //document.getElementById('searchCount').innerHTML = '<h2>Showing ' + response.hits.hits.length + ' results</h2>';
+        document.getElementById('searchCount').innerHTML = '<h3 class="rightAlignText">' + response.hits.hits.length + ' results</h3>';
         document.getElementById('searchResult').innerHTML = output;
     }
 }
