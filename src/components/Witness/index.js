@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
-import {DropdownButton, MenuItem} from 'react-bootstrap';
+import {DropdownButton, MenuItem, Row, Col} from 'react-bootstrap';
 
 import Service from './../utils/service.js';
 
@@ -34,49 +34,57 @@ class Witness extends Component {
     }
 
     handleSearchEvent(event){
-        console.log(this.state.searchbar);
-        console.log(this.state.dropdown);
         this.getWitnesses("witnesses", this.state.searchbar, this.state.dropdown);
     }
 
     render() {
         return (
             <div className="Witness">
-                <div className="padding">
-                    <input 
-                        type="input"
-                        className="col-lg-6"
-                        placeholder="Enter Search Term.... "
-                        onChange={this.handleSearchBarChange}
-                    />
-
-                    <div className="col-lg-6">
-                            <DropdownButton
-                                    title={this.state.dropdown}
-                                    key={"asd"}
-                                    id={"type"}
-                                    className="col"
-                                    onChange={this.handleDropDownChange}>
-                                <MenuItem eventKey="address" onSelect={this.handleDropDownChange}>Address</MenuItem>
-                                <MenuItem eventKey="voteCount" onSelect={this.handleDropDownChange}>Vote Count</MenuItem>
-                                <MenuItem eventKey="url" onSelect={this.handleDropDownChange}>Site Name</MenuItem>
-                                <MenuItem eventKey="totalmissed" onSelect={this.handleDropDownChange}>Total Missed</MenuItem>
-                                <MenuItem eventKey="latestBlockNum" onSelect={this.handleDropDownChange}>Latest Block Number</MenuItem>
-                                <MenuItem eventKey="latestSlotNum" onSelect={this.handleDropDownChange}>Latest Slot Number</MenuItem>
-                                {/*<MenuItem divider />
-                                <MenuItem eventKey="4">Separated link</MenuItem>*/}
-                            </DropdownButton>
+                <Row className="padding">
+                        <Col xs={12} md={8} >
+                            <div className="leftAlign">
+                                <DropdownButton
+                                        title={this.state.dropdown}
+                                        key={"asd"}
+                                        id={"type"}
+                                        bsStyle="btn-light"
+                                        onChange={this.handleDropDownChange}>
+                                    <MenuItem eventKey="address" onSelect={this.handleDropDownChange}>Address</MenuItem>
+                                    <MenuItem eventKey="voteCount" onSelect={this.handleDropDownChange}>Vote Count</MenuItem>
+                                    <MenuItem eventKey="url" onSelect={this.handleDropDownChange}>Site Name</MenuItem>
+                                    <MenuItem eventKey="totalmissed" onSelect={this.handleDropDownChange}>Total Missed</MenuItem>
+                                    <MenuItem eventKey="latestBlockNum" onSelect={this.handleDropDownChange}>Latest Block Number</MenuItem>
+                                    <MenuItem eventKey="latestSlotNum" onSelect={this.handleDropDownChange}>Latest Slot Number</MenuItem>
+                                    {/*<MenuItem divider />
+                                    <MenuItem eventKey="4">Separated link</MenuItem>*/}
+                                </DropdownButton>
+                            </div>
+                        
+                            <div className="paddingLeft">
+                                <input 
+                                    type="input"
+                                    className="searchBar"
+                                    placeholder="Enter Search Term.... "
+                                    onChange={this.handleSearchBarChange}
+                                />
+                            </div>
+                        </Col>
+                    
+                        <Col xs={6} md={4}>
                             <input 
                                 type="submit"
-                                className="col"
+                                value="Search"
+                                className="btn btn-light rightAlign"
                                 placeholder=""
                                 onClick={this.handleSearchEvent}
                             />
-                            <div class="col rightAlignText" id="searchResults">Results: {this.state.witnesses.length}</div>
-                    </div> 
-                </div>
-                <WitnessTable witnesses={this.state.witnesses}/>
+                         </Col>
 
+                            {/*<div class="rightAlignText" id="searchResults">Results: {this.state.witnesses.length}</div>*/}
+                </Row>
+                <div className="padding">
+                    <WitnessTable witnesses={this.state.witnesses}/>
+                </div>
             </div>
 
         );
@@ -97,37 +105,38 @@ class Witness extends Component {
             witnesses:response.hits.hits
         });
 
+        console.log(this.state.witnesses)
+
         /*output += "<td>pubKey: " + witness._source.pubkey + '</td>';*/
         /*output += "<td>isJobs: " + witness._source.isjobs + '</td>';*/
-
-        //document.getElementById('searchCount').innerHTML = '<h3 class="rightAlignText">' + response.hits.hits.length + ' results</h3>';
-
     }
 }
 
 class WitnessTable extends React.Component {
     render(){
         return(
-            <table id="witnessTable">
+            <table id="witnessTable padding">
                 <tbody>
                     <tr>
-                        <td>Address</td>
-                        <td>Vote Count</td>
-                        <td>Site Name</td>
-                        <td>Total Missed</td>
-                        <td>Latest Block Number</td>
-                        <td>Latest Slot Number</td>
+                        <th>#</th>
+                        <th>Address</th>
+                        <th>Vote Count</th>
+                        <th>Site Name</th>
+                        <th>Total Missed</th>
+                        <th>Latest Block</th>
+                        <th>Latest Slot</th>
                     </tr>
                     {
-                        this.props.witnesses.map((witness) => { 
+                        this.props.witnesses.map((witness, index) => { 
                             var output = 
-                            <tr>
-                                <td>{witness._source.address}</td>
-                                <td>{witness._source.votecount}</td>
-                                <td>{witness._source.url}</td>
-                                <td>{witness._source.totalmissed}</td>
-                                <td>{witness._source.latestblocknum}</td>
-                                <td>{witness._source.latestslotnum}</td>
+                            <tr key={index}>
+                                <td >{index}</td>
+                                <td className="tableRowHeight">{witness._source.address}</td>
+                                <td>{witness._source.voteCount}</td>
+                                <td><a href="{witness._source.url}">{witness._source.url}</a></td>
+                                <td>{witness._source.totalMissed}</td>
+                                <td>{witness._source.latestBlockNum}</td>
+                                <td>{witness._source.latestsLotNum}</td>
                             </tr>
                             return output;
                         })
@@ -135,9 +144,7 @@ class WitnessTable extends React.Component {
                 </tbody>
             </table>
         )
-
     }
-
 }
 
 export default Witness;

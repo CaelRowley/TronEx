@@ -5,5 +5,28 @@ td, th {
 }
 
 tr:nth-child(even) {
-    background-color: #777777;
+    background-color: #999999;
+}
+
+.tableRowHeight {
+	line-height: 2em
+}
+
+.rightAlign {
+  	float: right;
+  	width: 30%; 
+}
+
+.leftAlign {
+  	float: left;
+}
+
+.searchBar {
+	float: left;
+	width: 80%; 
+
+}
+
+.paddingLeft {
+	padding-left: 10px
 }
