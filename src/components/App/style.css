@@ -8,12 +8,12 @@
 }
 
 .App-header {
-  background-color: #333333;
+  background-color: #555555;
   color: white;
 }
 
 table {
-    background-color: #555555;
+    background-color: #777777;
     color: white;
     font-size: medium;
     width: 100%;
@@ -27,11 +27,6 @@ table {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .center {
     text-align: center;
     color: white;
@@ -42,9 +37,8 @@ td, th {
     padding: 8px;
 }
 
-
-html {
-  box-sizing: border-box;
+a {
+    box-sizing: border-box;
 }
 
 .tronText {
@@ -52,6 +46,9 @@ html {
   padding: 20px;
 }
 
+.padding {
+  padding-top: 1.3em
+}
 /*h2 {
     font-family: arial, sans-serif;
 }*/

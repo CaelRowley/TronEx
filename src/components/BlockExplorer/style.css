@@ -1,12 +1,8 @@
 .tableLower {
-    background-color: #777777;
+    background-color: #999999;
     color: white;
     font-family: arial, sans-serif;
     width: 100%; 
-}
-
-.padding {
-	padding-top: 10px
 }
 
 .rightAlignText {

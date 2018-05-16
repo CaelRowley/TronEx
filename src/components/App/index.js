@@ -14,6 +14,10 @@ import BlockExplorer from './../BlockExplorer';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class App extends Component {
+  getTronixPrice(){
+    // add get tronix price => https://api.coinmarketcap.com/v1/ticker/tronix/
+  }
+
   render() {
     return (
       <div className="App">
@@ -49,7 +53,13 @@ class App extends Component {
           </Router>
          {/* </div>*/}
         </div>
+        <footer className="footer">
+          <div className="App-header">
+            <h2 className="tronText container">TronEx</h2>
+          </div>
+        </footer>
       </div>
+      
     );
   }
 }
