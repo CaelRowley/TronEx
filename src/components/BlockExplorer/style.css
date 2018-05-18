@@ -17,23 +17,13 @@
   text-align: right;
 }
 
-/* ul li {
-  display: inline;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-} */
-
 ul {
     list-style-type: none;
-    /* margin: 0;
-    padding: 0; */
     overflow: hidden;
     background-color: #333;
 }
 
 li {
-    /* float: left; */
     display:inline-block;
     padding-left: 2em;
     padding-right: 2em;
@@ -50,61 +40,10 @@ li a {
 li a:hover {
     color: red;
     background-color: #111;
-    text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.1),0 -4px 15px rgba(255,50,50,0.1);
+    text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
     border-bottom:0.3em solid tomato;
     height:2.5em;
 }
-
-/* ul li:nth-last-child() {
-    border-bottom:0.3em solid tomato;
-    height:5em;
-} */
-
-/* ul#nav li:last-child Link {
-   color: green;
-} */
-
-/* ul{
-  list-style-type: none;
-  position: absolute;
-  left: 20px;
-  top: 20px;
-}
-
-li{
-  width: 50px;
-  float: left;
-    -webkit-transition: 0.5s ease;
-
-  &:hover{
-    text-shadow: 0px -2px 0px rgba(0,0,0,1), 0 0 5px rgba(255,255,255,0.8),0 -4px 15px rgba(255,255,255,0.5);
-  }
-  &:nth-of-type(1):hover ~ .underbar{
-    left: 0;
-    width: 40px;
-    background: rgba(100,100,200,1);
-  }
-  &:nth-of-type(2):hover ~ .underbar{
-    left: 50px;
-    width: 40px;
-    background: rgba(200,100,100,1);
-  }
-  &:nth-of-type(3):hover ~ .underbar{
-    left: 100px;
-    width: 40px;
-    height: 1px;
-    background: rgba(150,250,250,0.5);
-    box-shadow: 0 0 10px rgba(70,250,250,1);
-  }
-  &:nth-of-type(4):hover ~ .underbar{
-    left: 150px;
-    width: 50px;
-    height: 1px;
-    background: rgba(150,250,250,0.5);
-    box-shadow: 0 0 10px rgba(70,250,250,1);
-  }
-  cursor: pointer;
-} */
 
 .navLink:link {
     text-align: center;
@@ -130,13 +69,47 @@ li{
 
 .navLink:hover {
     cursor: pointer;
-    /* color: #ff4d4d; */
     color: tomato;
-
     font-size: 2rem;
 }
 
 .navLink:active {
+    color: darkred;
+    font-size: 2rem;
+}
+
+.navLinkSelected:link {
+    text-align: center;
+    color: tomato;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    height:2.5em;
+
+    text-decoration: none;
+
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    -ms-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
+
+    border-bottom:0.3em solid tomato;
+}
+
+.navLinkSelected:visited {
+    color: tomato;
+}
+
+.navLinkSelected:hover {
+    cursor: pointer;
+    color: tomato;
+    font-size: 2rem;
+}
+
+.navLinkSelected:active {
     color: darkred;
     font-size: 2rem;
 }
