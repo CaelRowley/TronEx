@@ -18,11 +18,11 @@ class BlockExplorer extends Component {
                 <table className="tableLower">
                   <tbody>
                     <tr>
-                      <td><Link className="center" to="/blockchainexplorer/block">Blocks</Link></td>
-                      <td><Link className="center" to="/blockchainexplorer/account">Accounts</Link></td>
-                      <td><Link className="center" to="/blockchainexplorer/witness">Witnesses</Link></td>
-                      <td><Link className="center" to="/blockchainexplorer/issuedassets">Assets</Link></td>
-                      <td><Link className="center" to="/blockchainexplorer/nodes">Nodes</Link></td>
+                      <td><Link className="navLink" to="/blockchainexplorer/block">Blocks</Link></td>
+                      <td><Link className="navLink" to="/blockchainexplorer/account">Accounts</Link></td>
+                      <td><Link className="navLink" to="/blockchainexplorer/witness">Witnesses</Link></td>
+                      <td><Link className="navLink" to="/blockchainexplorer/issuedassets">Assets</Link></td>
+                      <td><Link className="navLink" to="/blockchainexplorer/nodes">Nodes</Link></td>
                     </tr>
                   </tbody>
                 </table>
@@ -49,4 +49,5 @@ class BlockExplorer extends Component {
     );
   }
 }
+
 export default BlockExplorer;
