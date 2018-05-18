@@ -73,7 +73,7 @@ class BlockExplorer extends Component {
     return (
           <Router>
             <div>
-              <div className="container">
+              <div className="Othercontainer">
 
                   <ul>
                       <li><Link onClick={this.toggleBlocksClass} className={this.state.blocksSelected ? 'navLink': 'navLinkSelected'} to="/blockchainexplorer/block">Blocks</Link></li>
