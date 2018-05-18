@@ -24,15 +24,15 @@ class App extends Component {
         <div className="App-header">
           <h2 className="tronText container">TronEx</h2>
         </div>
-        
+
         <div className="App-nav container">
           <Router>
             <div>
             <table className="tableHover">
               <tbody>
                 <tr>
-                  <td><Link className="center" to="/visualisation">Visualisation</Link></td>
-                  <td><Link className="center" to="/blockchainexplorer">BlockExplorer</Link></td>
+                  <td><Link className="navLink" to="/visualisation">Visualisation</Link></td>
+                  <td><Link className="navLink" to="/blockchainexplorer">BlockExplorer</Link></td>
                 </tr>
               </tbody>
             </table>
@@ -59,7 +59,7 @@ class App extends Component {
           </div>
         </footer>
       </div>
-      
+
     );
   }
 }
