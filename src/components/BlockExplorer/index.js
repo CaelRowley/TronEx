@@ -14,18 +14,17 @@ class BlockExplorer extends Component {
     return (
           <Router>
             <div>
-              <div className="padding">
-                <table className="tableLower">
-                  <tbody>
-                    <tr>
-                      <td><Link className="navLink" to="/blockchainexplorer/block">Blocks</Link></td>
-                      <td><Link className="navLink" to="/blockchainexplorer/account">Accounts</Link></td>
-                      <td><Link className="navLink" to="/blockchainexplorer/witness">Witnesses</Link></td>
-                      <td><Link className="navLink" to="/blockchainexplorer/issuedassets">Assets</Link></td>
-                      <td><Link className="navLink" to="/blockchainexplorer/nodes">Nodes</Link></td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="container">
+
+                  <ul>
+                      <li><Link className="navLink" to="/blockchainexplorer/block">Blocks</Link></li>
+                      <li><Link className="navLink" to="/blockchainexplorer/account">Accounts</Link></li>
+                      <li><Link className="navLink" to="/blockchainexplorer/witness">Witnesses</Link></li>
+                      <li><Link className="navLink" to="/blockchainexplorer/issuedassets">Assets</Link></li>
+                      <li><Link className="navLink" to="/blockchainexplorer/nodes">Nodes</Link></li>
+                  </ul>
+
+
               </div>
               <Route exact path="/blockchainexplorer/account" component={Account}/>
               <Route exact path="/blockchainexplorer/witness" component={Witness}/>
