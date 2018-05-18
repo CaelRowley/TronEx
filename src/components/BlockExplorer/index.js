@@ -7,6 +7,8 @@ import IssuedAssets from './../IssuedAssets';
 import Witness from './../Witness';
 import Nodes from './../Nodes';
 
+import Info from './../../containers/Info'
+
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class BlockExplorer extends Component {
@@ -43,7 +45,7 @@ class BlockExplorer extends Component {
                 <h3>Please select a blockHash.</h3>
               )}/>*/}
 
-              {/*<Route path="/block/:blockHash" component={Block}/>*/}
+              <Route exact path="/blockchainexplorer/witness/:witnessAddress" component={Info}/>
             </div>
           </Router>
     );

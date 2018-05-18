@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './style.css';
+
 import {DropdownButton, MenuItem, Row, Col} from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 import Service from './../utils/service.js';
 
@@ -21,9 +23,9 @@ class Witness extends Component {
         this.handleSearchEvent = this.handleSearchEvent.bind(this);
     }
 
-    handleDropDownChange(e){
+    handleDropDownChange(event){
         this.setState({
-            dropdown: e
+            dropdown: event
         });
     }
 
@@ -40,7 +42,7 @@ class Witness extends Component {
     render() {
         return (
             <div className="Witness">
-                <Row className="padding">
+                <Row className="padding boarder-bottom-tron">
                         <Col xs={12} md={8} >
                             <div className="leftAlign">
                                 <DropdownButton
@@ -52,9 +54,10 @@ class Witness extends Component {
                                     <MenuItem eventKey="address" onSelect={this.handleDropDownChange}>Address</MenuItem>
                                     <MenuItem eventKey="voteCount" onSelect={this.handleDropDownChange}>Vote Count</MenuItem>
                                     <MenuItem eventKey="url" onSelect={this.handleDropDownChange}>Site Name</MenuItem>
-                                    <MenuItem eventKey="totalmissed" onSelect={this.handleDropDownChange}>Total Missed</MenuItem>
+                                    <MenuItem eventKey="totalProduced" onSelect={this.handleDropDownChange}>Total Produced</MenuItem>
+                                    <MenuItem eventKey="totalMissed" onSelect={this.handleDropDownChange}>Total Missed</MenuItem>
                                     <MenuItem eventKey="latestBlockNum" onSelect={this.handleDropDownChange}>Latest Block Number</MenuItem>
-                                    <MenuItem eventKey="latestSlotNum" onSelect={this.handleDropDownChange}>Latest Slot Number</MenuItem>
+                                    <MenuItem eventKey="latestsLotNum" onSelect={this.handleDropDownChange}>Latest Slot Number</MenuItem>
                                     {/*<MenuItem divider />
                                     <MenuItem eventKey="4">Separated link</MenuItem>*/}
                                 </DropdownButton>
@@ -71,6 +74,10 @@ class Witness extends Component {
                         </Col>
                     
                         <Col xs={6} md={4}>
+                            
+
+                            <div className="btn btn-light rightAlign">Results: {this.state.witnesses.length}</div>
+
                             <input 
                                 type="submit"
                                 value="Search"
@@ -80,7 +87,7 @@ class Witness extends Component {
                             />
                          </Col>
 
-                            {/*<div class="rightAlignText" id="searchResults">Results: {this.state.witnesses.length}</div>*/}
+                    
                 </Row>
                 <div className="padding">
                     <WitnessTable witnesses={this.state.witnesses}/>
@@ -105,8 +112,6 @@ class Witness extends Component {
             witnesses:response.hits.hits
         });
 
-        console.log(this.state.witnesses)
-
         /*output += "<td>pubKey: " + witness._source.pubkey + '</td>';*/
         /*output += "<td>isJobs: " + witness._source.isjobs + '</td>';*/
     }
@@ -122,6 +127,7 @@ class WitnessTable extends React.Component {
                         <th>Address</th>
                         <th>Vote Count</th>
                         <th>Site Name</th>
+                        <th>Total Produced</th>
                         <th>Total Missed</th>
                         <th>Latest Block</th>
                         <th>Latest Slot</th>
@@ -129,11 +135,12 @@ class WitnessTable extends React.Component {
                     {
                         this.props.witnesses.map((witness, index) => { 
                             var output = 
-                            <tr key={index}>
-                                <td >{index}</td>
-                                <td className="tableRowHeight">{witness._source.address}</td>
+                            <tr key={witness._source.address}>
+                                <td className="tableRowHeight">{index +1}</td>
+                                <td><Link  to={{ pathname: `/blockchainexplorer/witness/${witness._source.address}`, state: {witness}}}>{witness._source.address}</Link></td>
                                 <td>{witness._source.voteCount}</td>
-                                <td><a href="{witness._source.url}">{witness._source.url}</a></td>
+                                <td><Link to="{witness._source.url}">{witness._source.url}</Link></td>
+                                <td>{witness._source.totalProduced}</td>
                                 <td>{witness._source.totalMissed}</td>
                                 <td>{witness._source.latestBlockNum}</td>
                                 <td>{witness._source.latestsLotNum}</td>

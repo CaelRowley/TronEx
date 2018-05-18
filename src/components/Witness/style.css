@@ -14,7 +14,8 @@ tr:nth-child(even) {
 
 .rightAlign {
   	float: right;
-  	width: 30%; 
+  	width: 30%;
+    padding-right: 1.3em;
 }
 
 .leftAlign {
@@ -27,6 +28,13 @@ tr:nth-child(even) {
 
 }
 
+.boarder-bottom-tron {
+  border-color: #f44336 !important;
+  border-bottom: 1px solid;
+  padding-bottom: 1.3em;
+
+}
+
 .paddingLeft {
-	padding-left: 10px
+	padding-left: 1.3em;
 }
