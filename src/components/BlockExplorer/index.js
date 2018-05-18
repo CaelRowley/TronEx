@@ -8,6 +8,7 @@ import Witness from './../Witness';
 import Nodes from './../Nodes';
 
 import Info from './../../containers/Info'
+import AccountInfo from './../../containers/AccountInfo'
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
@@ -36,16 +37,8 @@ class BlockExplorer extends Component {
               <Route exact path="/blockchainexplorer/nodes" component={Nodes}/>
 
 
-
-              {/*<Route exact path="/block" render={() => (
-                <h3>Please select a blockHash.</h3>
-              )}/>*/}
-
-            {/*  <Route exact path="/witness" render={() => (
-                <h3>Please select a blockHash.</h3>
-              )}/>*/}
-
               <Route exact path="/blockchainexplorer/witness/:witnessAddress" component={Info}/>
+              <Route exact path="/blockchainexplorer/account/:accountAddress" component={AccountInfo}/>
             </div>
           </Router>
     );
