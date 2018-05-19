@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './style.css';
 
-import Block from './../Block';
-import Account from './../Account';
-import IssuedAssets from './../IssuedAssets';
-import Witness from './../Witness';
-import Nodes from './../Nodes';
-
 import Visualisation from './../Visualisation';
 import BlockExplorer from './../BlockExplorer';
 
@@ -20,7 +14,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App fullContainer">
         <div className="App-header">
           <h2 className="tronText container">TronEx</h2>
         </div>

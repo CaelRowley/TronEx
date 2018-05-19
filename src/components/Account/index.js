@@ -1,24 +1,103 @@
 import React, { Component } from 'react';
 import './style.css';
 
+import {DropdownButton, MenuItem, Row, Col} from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+
 import Service from './../utils/service.js';
 
 class Account extends Component {
 
-    render() {
-        this.getAccount();
-        return (
-            
-            <div className="Account">
-                <div id="searchCount"></div>
-                <div id="searchResult"></div>
+     constructor(props){
+        super(props);
 
-            </div>
+        this.state = {
+            accounts:[],   
+            dropdown:"Select An Item",
+            searchbar:""
+        }
 
-        );
+        this.getAccounts("accounts","","");
+
+        this.handleDropDownChange = this.handleDropDownChange.bind(this);
+        this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
+        this.handleSearchEvent = this.handleSearchEvent.bind(this);
     }
 
-    getAccount(){
+    handleDropDownChange(event){
+        this.setState({
+            dropdown: event
+        });
+    }
+
+    handleSearchBarChange(event){
+        this.setState({
+            searchbar: event.target.value
+        });
+    }
+
+    handleSearchEvent(event){
+        this.getAccounts("accounts", this.state.searchbar, this.state.dropdown);
+    }
+
+    render() {
+        return (
+            <div className="Account">
+                    <Row className="padding boarder-bottom-tron">
+                            <Col xs={12} md={8} >
+                                <div className="leftAlign">
+                                    <DropdownButton
+                                            title={this.state.dropdown}
+                                            key={"asd"}
+                                            id={"type"}
+                                            bsStyle="btn-light"
+                                            onChange={this.handleDropDownChange}>
+                                        <MenuItem eventKey="address" onSelect={this.handleDropDownChange}>Address</MenuItem>
+                                        <MenuItem eventKey="balance" onSelect={this.handleDropDownChange}>Balance</MenuItem>
+                                        <MenuItem eventKey="type" onSelect={this.handleDropDownChange}>Type</MenuItem>
+                                        <MenuItem eventKey="latestoprationtime" onSelect={this.handleDropDownChange}>latestoprationtime</MenuItem>
+                                        {/*<MenuItem eventKey="totalMissed" onSelect={this.handleDropDownChange}>Total Missed</MenuItem>
+                                        <MenuItem eventKey="latestBlockNum" onSelect={this.handleDropDownChange}>Latest Block Number</MenuItem>
+                                        <MenuItem eventKey="latestsLotNum" onSelect={this.handleDropDownChange}>Latest Slot Number</MenuItem>*/}
+                                        {/*<MenuItem divider />
+                                        <MenuItem eventKey="4">Separated link</MenuItem>*/}
+                                    </DropdownButton>
+                                </div>
+                            
+                                <div className="paddingLeft">
+                                    <input 
+                                        type="input"
+                                        className="searchBar"
+                                        placeholder="Enter Search Term.... "
+                                        onChange={this.handleSearchBarChange}
+                                    />
+                                </div>
+                            </Col>
+                        
+                            <Col xs={6} md={4}>
+                                
+
+                                <div className="btn btn-light rightAlign">Results: {this.state.accounts.length}</div>
+
+                                <input 
+                                    type="submit"
+                                    value="Search"
+                                    className="btn btn-light rightAlign"
+                                    placeholder=""
+                                    onClick={this.handleSearchEvent}
+                                />
+                             </Col>
+
+                        
+                    </Row>
+                    <div className="padding">
+                        <AccountTable accounts={this.state.accounts}/>
+                    </div>
+                </div>
+            );
+    }
+
+    getAccounts(){
         var that = this;
 
         var service = new Service();
@@ -29,39 +108,44 @@ class Account extends Component {
     }
 
     _displayResponse(response){
-        var output = "";
-        for (var i = 0; i < response.hits.hits.length; i++) {
-            output += '<div class="jumbotron panel-default">'
-            output += '<h2>' + "ACCOUNT: " + response.hits.hits[i]._id + '</h2>';
-            output += '<ul>'
-            output += "<li>accountname: " + response.hits.hits[i]._source.accountname + '</li></br>';
-            output += "<li>type: " + response.hits.hits[i]._source.type + '</li></br>';
-            output += "<li>address: " + response.hits.hits[i]._source.address + '</li></br>';
-            output += "<li>balance: " + response.hits.hits[i]._source.balance + '</li></br>';
-            output += "<li>latestoprationtime: " + response.hits.hits[i]._source.latestoprationtime + '</li></br>';
-            output += '</ul>';
-            output += '</div>';
+        this.setState({
+            accounts:response.hits.hits
+        });
+    }
+}
 
-            if(response.hits.hits[i]._source.voteslist){
-                output += "voteslist: " + '</br>';
-                for(var j in response.hits.hits[i]._source.voteslist){
-                    output += "___voteslist " + j + "___" + '</br>';
-                    output += " - voteaddress: " + response.hits.hits[i]._source.voteslist[j].voteaddress + '</br>';
-                    output += " - votecount: " + response.hits.hits[i]._source.voteslist[j].votecount + '</br>';
-                }
-            }
-
-            if(response.hits.hits[i]._source.assetmap){
-                output += "assetmap: " + '</br>';
-                for(var j in response.hits.hits[i]._source.assetmap){
-                    output += "___assetmap " + j + "___" + '</br>';
-                    output += " - name: " + j + '</br>';
-                    output += " - ammount: " + response.hits.hits[i]._source.assetmap[j] + '</br>';
-                }
-            }
-        }
-        document.getElementById('searchCount').innerHTML = '<h3 class="rightAlignText">' + response.hits.hits.length + ' results</h3>';
-        document.getElementById('searchResult').innerHTML = output;
+class AccountTable extends React.Component {
+    render(){
+        return(
+            <table id="witnessTable padding">
+                <tbody>
+                    <tr>
+                        <th>#</th>
+                        <th>Address</th>
+                        <th>balance</th>
+                        {/*<th>accountname</th>*/}
+                        <th>type</th>
+                        <th>latestoprationtime</th>
+                        {/*<th>voteslist</th>
+                        <th>assetmap</th>*/}
+                    </tr>
+                    {
+                        this.props.accounts.map((account, index) => { 
+                            var output = 
+                            <tr key={account._source.address}>
+                                <td className="tableRowHeight">{index +1}</td>
+                                <td><Link to={`/blockchainexplorer/account/${account._source.address}`}>{account._source.address}</Link></td>
+                                <td>{account._source.balance}</td>
+                                
+                                <td>{account._source.type}</td>
+                                <td>{account._source.latestOprationTime}</td>
+                            </tr>
+                            return output;
+                        })
+                    }
+                </tbody>
+            </table>
+        )
     }
 }
 

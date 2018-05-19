@@ -51,6 +51,10 @@ class Service {
         });
         return dfd;
     }
+
+    getWitnessByAddress(address){
+        return this.getEntity("witnesses", "witnessAddress", address);
+    }
 }
 
 export default Service;
