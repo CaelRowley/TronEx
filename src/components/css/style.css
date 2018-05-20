@@ -18,6 +18,10 @@
   	float: left;
 }
 
+.rightAlign {
+  	float: right;
+}
+
 .centerAlign {
   	float: left;
 }
@@ -66,4 +70,23 @@
 
 .width100 {
     width: 100%;
+}
+
+.tableRowHeight {
+	line-height: 2em
+}
+
+.searchBar {
+	float: left;
+	width: 80%;
+}
+
+td, th {
+    border: 1px solid #555555;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #999999;
 }
