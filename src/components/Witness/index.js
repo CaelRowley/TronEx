@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import '../css/style.css';
 
 import {DropdownButton, MenuItem, Row, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
@@ -11,7 +12,7 @@ class Witness extends Component {
         super(props);
 
         this.state = {
-            witnesses:[],   
+            witnesses:[],
             dropdown:"Select An Item",
             searchbar:""
         }
@@ -62,9 +63,9 @@ class Witness extends Component {
                                     <MenuItem eventKey="4">Separated link</MenuItem>*/}
                                 </DropdownButton>
                             </div>
-                        
+
                             <div className="paddingLeft">
-                                <input 
+                                <input
                                     type="input"
                                     className="searchBar"
                                     placeholder="Enter Search Term.... "
@@ -72,22 +73,22 @@ class Witness extends Component {
                                 />
                             </div>
                         </Col>
-                    
+
                         <Col xs={6} md={4}>
-                            
 
-                            <div className="btn btn-light rightAlign">Results: {this.state.witnesses.length}</div>
 
-                            <input 
+                            <div className="btn btn-light rightAlign witnessRightAlignPadding">Results: {this.state.witnesses.length}</div>
+
+                            <input
                                 type="submit"
                                 value="Search"
-                                className="btn btn-light rightAlign"
+                                className="btn btn-light rightAlign witnessRightAlignPadding"
                                 placeholder=""
                                 onClick={this.handleSearchEvent}
                             />
                          </Col>
 
-                    
+
                 </Row>
                 <div className="padding">
                     <WitnessTable witnesses={this.state.witnesses}/>
@@ -133,8 +134,8 @@ class WitnessTable extends React.Component {
                         <th>Latest Slot</th>
                     </tr>
                     {
-                        this.props.witnesses.map((witness, index) => { 
-                            var output = 
+                        this.props.witnesses.map((witness, index) => {
+                            var output =
                             <tr key={witness._source.address}>
                                 <td className="tableRowHeight">{index +1}</td>
                                 <td><Link to={`/blockchainexplorer/witness/${witness._source.address}`}>{witness._source.address}</Link></td>

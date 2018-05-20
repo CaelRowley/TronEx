@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './style.css';
+import '../css/style.css';
 
 import Visualisation from './../Visualisation';
 import BlockExplorer from './../BlockExplorer';
@@ -12,24 +13,67 @@ class App extends Component {
     // add get tronix price => https://api.coinmarketcap.com/v1/ticker/tronix/
   }
 
+  constructor(props) {
+        super(props);
+        this.state = {
+            visualisationSelected: false,
+            blockExplorerSelected: false,
+        };
+
+        this.clickVisualisation= this.clickVisualisation.bind(this);
+        this.clickBlockExplorer= this.clickBlockExplorer.bind(this);
+        this.findLiVisualisationState= this.findLiVisualisationState.bind(this);
+        this.findLiBlockExplorerState= this.findLiBlockExplorerState.bind(this);
+    }
+
+    clickVisualisation() {
+        this.setState({ visualisationSelected: true });
+        this.setState({ blockExplorerSelected: false });
+    };
+
+    clickBlockExplorer() {
+        this.setState({ blockExplorerSelected: true });
+        this.setState({ visualisationSelected: false });
+    };
+
+    findLiVisualisationState() {
+        const blockExplorerState = this.state.blockExplorerSelected;
+        const visualisationState = this.state.visualisationSelected;
+        if(visualisationState)
+            return 'appLiSelected';
+        else if(blockExplorerState)
+            return 'appLiOtherSelected';
+        else
+            return 'appLi'
+    };
+
+    findLiBlockExplorerState() {
+        const blockExplorerState = this.state.blockExplorerSelected;
+        const visualisationState = this.state.visualisationSelected;
+        if(blockExplorerState)
+            return 'appLiSelected';
+        else if(visualisationState)
+            return 'appLiOtherSelected';
+        else
+            return 'appLi'
+    };
+
+
   render() {
     return (
-      <div className="App fullContainer">
-        <div className="App-header">
-          <h2 className="tronText container">TronEx</h2>
+      <div className="textAlignCenter fullContainer">
+        <div className="bcGrey777 colorWhite">
+          <h2 className="textAlignLeft paddingLeft container appHeader">TronEx</h2>
         </div>
 
-        <div className="App-nav container">
+        <div className="container">
           <Router>
             <div>
-            <table className="tableHover">
-              <tbody>
-                <tr>
-                  <td><Link className="navLink" to="/visualisation">Visualisation</Link></td>
-                  <td><Link className="navLink" to="/blockchainexplorer">BlockExplorer</Link></td>
-                </tr>
-              </tbody>
-            </table>
+
+            <ul className="appUl">
+                <li className={this.findLiVisualisationState()}><Link onClick={this.clickVisualisation} className={this.state.visualisationSelected ? 'appNavLinkSelected': 'appNavLink'} to="/visualisation">Visualisation</Link></li>
+                <li className={this.findLiBlockExplorerState()}><Link onClick={this.clickBlockExplorer} className={this.state.blockExplorerSelected ? 'appNavLinkSelected': 'appNavLink'} to="/blockchainexplorer">BlockExplorer</Link></li>
+            </ul>
 
               <Route exact path="/visualisation" component={Visualisation}/>
               <Route exact path="/blockchainexplorer" component={BlockExplorer}/>

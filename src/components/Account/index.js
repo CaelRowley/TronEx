@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import '../css/style.css';
 
 import {DropdownButton, MenuItem, Row, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
@@ -12,7 +13,7 @@ class Account extends Component {
         super(props);
 
         this.state = {
-            accounts:[],   
+            accounts:[],
             dropdown:"Select An Item",
             searchbar:""
         }
@@ -63,9 +64,9 @@ class Account extends Component {
                                         <MenuItem eventKey="4">Separated link</MenuItem>*/}
                                     </DropdownButton>
                                 </div>
-                            
+
                                 <div className="paddingLeft">
-                                    <input 
+                                    <input
                                         type="input"
                                         className="searchBar"
                                         placeholder="Enter Search Term.... "
@@ -73,22 +74,22 @@ class Account extends Component {
                                     />
                                 </div>
                             </Col>
-                        
+
                             <Col xs={6} md={4}>
-                                
 
-                                <div className="btn btn-light rightAlign">Results: {this.state.accounts.length}</div>
 
-                                <input 
+                                <div className="btn btn-light rightAlign accountRightAlignPadding">Results: {this.state.accounts.length}</div>
+
+                                <input
                                     type="submit"
                                     value="Search"
-                                    className="btn btn-light rightAlign"
+                                    className="btn btn-light rightAlign accountRightAlignPadding"
                                     placeholder=""
                                     onClick={this.handleSearchEvent}
                                 />
                              </Col>
 
-                        
+
                     </Row>
                     <div className="padding">
                         <AccountTable accounts={this.state.accounts}/>
@@ -130,13 +131,13 @@ class AccountTable extends React.Component {
                         <th>assetmap</th>*/}
                     </tr>
                     {
-                        this.props.accounts.map((account, index) => { 
-                            var output = 
+                        this.props.accounts.map((account, index) => {
+                            var output =
                             <tr key={account._source.address}>
                                 <td className="tableRowHeight">{index +1}</td>
                                 <td><Link to={`/blockchainexplorer/account/${account._source.address}`}>{account._source.address}</Link></td>
                                 <td>{account._source.balance}</td>
-                                
+
                                 <td>{account._source.type}</td>
                                 <td>{account._source.latestOprationTime}</td>
                             </tr>

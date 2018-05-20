@@ -1,115 +1,106 @@
-.tableLower {
-    background-color: #999999;
-    color: white;
-    font-family: arial, sans-serif;
-    width: 100%;
-    /* height: 40px; */
-    /* display:block; */
-    overflow:scroll;
+.blockExplorerNavLink:link {
+    text-decoration: none;
+
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    -ms-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
 }
 
-.Othercontainer {
-  width: 100%;
-  margin: 0 auto;
+.blockExplorerNavLink:visited {
+  color: white;
 }
 
-.rightAlignText {
-  text-align: right;
+.blockExplorerNavLink:hover {
+    cursor: pointer;
+    color: tomato;
+    text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
 }
 
-ul {
+.blockExplorerNavLink:active {
+    color: darkred;
+}
+
+.blockExplorerNavLinkSelected:link {
+    text-decoration: none;
+
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    -ms-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
+}
+
+.blockExplorerNavLinkSelected:visited {
+  color: white;
+}
+
+.blockExplorerNavLinkSelected:hover {
+    cursor: pointer;
+    color: tomato;
+    text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
+}
+
+.blockExplorerNavLinkSelected:active {
+    color: darkred;
+}
+
+.blockExplorerUl {
     list-style-type: none;
     overflow: hidden;
     background-color: #333;
 }
 
-li {
+.blockExplorerLi {
     display:inline-block;
-    padding-left: 2em;
-    padding-right: 2em;
-}
-
-li a {
-    display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0.5em 5em;
     text-decoration: none;
 }
 
-li a:hover {
+.blockExplorerLi:hover {
     color: red;
     background-color: #111;
     text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
-    border-bottom:0.3em solid tomato;
-    height:2.5em;
+    border-bottom:0.2em solid tomato;
+    line-height: 0.8em;
+    border-radius: 5px 5px 0px 0px;
 }
 
-.navLink:link {
-    text-align: center;
+.blockExplorerLiSelected {
+    display:inline-block;
     color: white;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-
-    text-decoration: none;
-
-    -webkit-transition: color 0.3s ease-out;
-    -moz-transition: color 0.3s ease-out;
-    -o-transition: color 0.3s ease-out;
-    -ms-transition: color 0.3s ease-out;
-    transition: color 0.3s ease-out;
-}
-
-.navLink:visited {
-  color: white;
-}
-
-.navLink:hover {
-    cursor: pointer;
-    color: tomato;
-    font-size: 2rem;
-}
-
-.navLink:active {
-    color: darkred;
-    font-size: 2rem;
-}
-
-.navLinkSelected:link {
     text-align: center;
-    color: tomato;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    height:2.5em;
-
+    padding: 0.5em 5em;
     text-decoration: none;
+    border-bottom:0.2em solid tomato;
+    line-height: 0.8em;
 
-    -webkit-transition: color 0.3s ease-out;
-    -moz-transition: color 0.3s ease-out;
-    -o-transition: color 0.3s ease-out;
-    -ms-transition: color 0.3s ease-out;
-    transition: color 0.3s ease-out;
-
-    border-bottom:0.3em solid tomato;
+    background-color: #111;
+    text-shadow: 0px -1px 0px rgba(0,0,0,1);
+    border-radius: 5px 5px 0px 0px;
 }
 
-.navLinkSelected:visited {
-    color: tomato;
+.blockExplorerLiSelected:hover {
+    color: red;
+    background-color: #111;
+    text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
+    border-radius: 5px 5px 0px 0px;
 }
 
-.navLinkSelected:hover {
-    cursor: pointer;
-    color: tomato;
-    font-size: 2rem;
+.blockExplorerLiOtherSelected {
+    display:inline-block;
+    color: white;
+    text-align: center;
+    padding: 0.5em 5em;
+    text-decoration: none;
 }
 
-.navLinkSelected:active {
-    color: darkred;
-    font-size: 2rem;
+.blockExplorerLiOtherSelected:hover {
+    color: red;
+    background-color: #111;
+    text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
+    border-radius: 5px 5px 0px 0px;
 }

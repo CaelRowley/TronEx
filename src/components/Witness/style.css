@@ -1,40 +1,4 @@
-td, th {
-    border: 1px solid #555555;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #999999;
-}
-
-.tableRowHeight {
-	line-height: 2em
-}
-
-.rightAlign {
-  	float: right;
-  	width: 30%;
+.witnessRightAlignPadding{
+    width: 30%;
     padding-right: 1.3em;
-}
-
-.leftAlign {
-  	float: left;
-}
-
-.searchBar {
-	float: left;
-	width: 80%; 
-
-}
-
-.boarder-bottom-tron {
-  border-color: #f44336 !important;
-  border-bottom: 1px solid;
-  padding-bottom: 1.3em;
-
-}
-
-.paddingLeft {
-	padding-left: 1.3em;
 }
