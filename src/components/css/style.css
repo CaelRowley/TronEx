@@ -1,0 +1,65 @@
+.bcGrey111 {
+	background-color: #111;
+}
+
+.bcGrey333 {
+    background-color: #333;
+}
+
+.bcGrey555 {
+    background-color: #555;
+}
+
+.bcGrey777 {
+    background-color: #555;
+}
+
+.leftAlign {
+  	float: left;
+}
+
+.textAlignRight {
+	text-align: right;
+}
+
+.textAlignLeft {
+	text-align: left;
+}
+
+.textAlignCenter {
+  text-align: center;
+}
+
+.colorWhite {
+    color: white;
+}
+
+.paddingAll {
+    padding: 0.5em;
+}
+
+.paddingLeft {
+    padding-left: 0.5em;
+}
+
+.paddingRight {
+    padding-right: 0.5em;
+}
+
+.paddingTop {
+    padding-top: 0.5em;
+}
+
+.paddingBottom {
+    padding-bottom: 0.5em;
+}
+
+.boarder-bottom-tron {
+  border-color: #f44336 !important;
+  border-bottom: 1px solid;
+  padding-bottom: 1.3em;
+}
+
+.width100 {
+    width: 100%;
+}
