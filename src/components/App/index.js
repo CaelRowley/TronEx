@@ -18,7 +18,6 @@ class App extends Component {
         this.state = {
             visualisationSelected: false,
             blockExplorerSelected: false,
-            tabIsSelected: false,
         };
 
         this.clickVisualisation= this.clickVisualisation.bind(this);
@@ -29,31 +28,23 @@ class App extends Component {
 
     clickVisualisation() {
         const currentState = this.state.visualisationSelected;
-        const tabState = this.state.tabIsSelected;
         this.setState({ visualisationSelected: true });
         this.setState({ blockExplorerSelected: false });
-        this.setState({ tabIsSelected: !tabState });
     };
 
     clickBlockExplorer() {
         const currentState = this.state.blockExplorerSelected;
-        const tabState = this.state.tabIsSelected;
         this.setState({ blockExplorerSelected: true });
         this.setState({ visualisationSelected: false });
-        this.setState({ tabIsSelected: !tabState });
     };
 
     findLiVisualisationState() {
         const blockExplorerState = this.state.blockExplorerSelected;
         const visualisationState = this.state.visualisationSelected;
-        const selectedState = this.state.selectedState;
-
         if(visualisationState)
             return 'appLiSelected';
-
         else if(blockExplorerState)
             return 'appLiOtherSelected';
-
         else
             return 'appLi'
     };
@@ -61,8 +52,6 @@ class App extends Component {
     findLiBlockExplorerState() {
         const blockExplorerState = this.state.blockExplorerSelected;
         const visualisationState = this.state.visualisationSelected;
-        const selectedState = this.state.selectedState;
-
         if(blockExplorerState)
             return 'appLiSelected';
 
