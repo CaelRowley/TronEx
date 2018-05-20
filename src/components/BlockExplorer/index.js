@@ -16,11 +16,11 @@ class BlockExplorer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            blocksSelected: true,
-            accountsSelected: true,
-            witnessesSelected: true,
-            assetsSelected: true,
-            nodesSelected: true
+            blocksSelected: false,
+            accountsSelected: false,
+            witnessesSelected: false,
+            assetsSelected: false,
+            nodesSelected: false
         };
 
         this.toggleBlocksClass= this.toggleBlocksClass.bind(this);
@@ -32,42 +32,108 @@ class BlockExplorer extends Component {
     }
 
     toggleBlocksClass() {
-        const currentState = this.state.blocksSelected;
         this.toggleAllClassStatesToFalse();
-        this.setState({ blocksSelected: !currentState });
+        this.setState({ blocksSelected: true});
     };
 
     toggleAccountsClass() {
-        const currentState = this.state.accountsSelected;
         this.toggleAllClassStatesToFalse();
-        this.setState({ accountsSelected: !currentState });
+        this.setState({ accountsSelected: true });
     };
 
     toggleWitnessesClass() {
-        const currentState = this.state.witnessesSelected;
         this.toggleAllClassStatesToFalse();
-        this.setState({ witnessesSelected: !currentState });
+        this.setState({ witnessesSelected: true });
     };
 
     toggleAssetsClass() {
-        const currentState = this.state.assetsSelected;
         this.toggleAllClassStatesToFalse();
-        this.setState({ assetsSelected: !currentState });
+        this.setState({ assetsSelected: true });
     };
 
     toggleNodesClass() {
-        const currentState = this.state.nodesSelected;
         this.toggleAllClassStatesToFalse();
-        this.setState({ nodesSelected: !currentState });
+        this.setState({ nodesSelected: true });
     };
 
     toggleAllClassStatesToFalse() {
-        this.setState({ blocksSelected: true });
-        this.setState({ accountsSelected: true });
-        this.setState({ witnessesSelected: true });
-        this.setState({ assetsSelected: true });
-        this.setState({ nodesSelected: true });
+        this.setState({ blocksSelected: false });
+        this.setState({ accountsSelected: false });
+        this.setState({ witnessesSelected: false });
+        this.setState({ assetsSelected: false });
+        this.setState({ nodesSelected: false });
     };
+
+    findLiBlocksState() {
+        const blocksSelected = this.state.blocksSelected;
+        const accountsSelected = this.state.accountsSelected;
+        const witnessesSelected = this.state.witnessesSelected;
+        const assetsSelected = this.state.assetsSelected;
+        const nodesSelected = this.state.nodesSelected;
+        if(blocksSelected)
+            return 'blockExplorerLiSelected';
+        else if(accountsSelected || witnessesSelected || assetsSelected || nodesSelected)
+            return 'blockExplorerLiOtherSelected';
+        else
+            return 'blockExplorerLi'
+    };
+
+    findLiAccountsState() {
+        const blocksSelected = this.state.blocksSelected;
+        const accountsSelected = this.state.accountsSelected;
+        const witnessesSelected = this.state.witnessesSelected;
+        const assetsSelected = this.state.assetsSelected;
+        const nodesSelected = this.state.nodesSelected;
+        if(accountsSelected)
+            return 'blockExplorerLiSelected';
+        else if(blocksSelected || witnessesSelected || assetsSelected || nodesSelected)
+            return 'blockExplorerLiOtherSelected';
+        else
+            return 'blockExplorerLi'
+    };
+
+    findLiWitnesessState() {
+        const blocksSelected = this.state.blocksSelected;
+        const accountsSelected = this.state.accountsSelected;
+        const witnessesSelected = this.state.witnessesSelected;
+        const assetsSelected = this.state.assetsSelected;
+        const nodesSelected = this.state.nodesSelected;
+        if(witnessesSelected)
+            return 'blockExplorerLiSelected';
+        else if(accountsSelected || blocksSelected || assetsSelected || nodesSelected)
+            return 'blockExplorerLiOtherSelected';
+        else
+            return 'blockExplorerLi'
+    };
+
+    findLiAssetsState() {
+        const blocksSelected = this.state.blocksSelected;
+        const accountsSelected = this.state.accountsSelected;
+        const witnessesSelected = this.state.witnessesSelected;
+        const assetsSelected = this.state.assetsSelected;
+        const nodesSelected = this.state.nodesSelected;
+        if(assetsSelected)
+            return 'blockExplorerLiSelected';
+        else if(accountsSelected || witnessesSelected || blocksSelected || nodesSelected)
+            return 'blockExplorerLiOtherSelected';
+        else
+            return 'blockExplorerLi'
+    };
+
+    findLiNodesState() {
+        const blocksSelected = this.state.blocksSelected;
+        const accountsSelected = this.state.accountsSelected;
+        const witnessesSelected = this.state.witnessesSelected;
+        const assetsSelected = this.state.assetsSelected;
+        const nodesSelected = this.state.nodesSelected;
+        if(nodesSelected)
+            return 'blockExplorerLiSelected';
+        else if(accountsSelected || witnessesSelected || assetsSelected || blocksSelected)
+            return 'blockExplorerLiOtherSelected';
+        else
+            return 'blockExplorerLi'
+    };
+
 
   render() {
     return (
@@ -75,12 +141,12 @@ class BlockExplorer extends Component {
             <div>
               <div className="Othercontainer">
 
-                  <ul>
-                      <li><Link onClick={this.toggleBlocksClass} className={this.state.blocksSelected ? 'navLink': 'navLinkSelected'} to="/blockchainexplorer/block">Blocks</Link></li>
-                      <li><Link onClick={this.toggleAccountsClass} className={this.state.accountsSelected ? 'navLink': 'navLinkSelected'} to="/blockchainexplorer/account">Accounts</Link></li>
-                      <li><Link onClick={this.toggleWitnessesClass} className={this.state.witnessesSelected ? 'navLink': 'navLinkSelected'} to="/blockchainexplorer/witness">Witnesses</Link></li>
-                      <li><Link onClick={this.toggleAssetsClass} className={this.state.assetsSelected ? 'navLink': 'navLinkSelected'} to="/blockchainexplorer/issuedassets">Assets</Link></li>
-                      <li><Link onClick={this.toggleNodesClass} className={this.state.nodesSelected ? 'navLink': 'navLinkSelected'} to="/blockchainexplorer/nodes">Nodes</Link></li>
+                  <ul className="blockExplorerUl">
+                      <li className={this.findLiBlocksState()}><Link onClick={this.toggleBlocksClass} className={this.state.blocksSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/block">Blocks</Link></li>
+                      <li className={this.findLiAccountsState()}><Link onClick={this.toggleAccountsClass} className={this.state.accountsSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/account">Accounts</Link></li>
+                      <li className={this.findLiWitnesessState()}><Link onClick={this.toggleWitnessesClass} className={this.state.witnessesSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/witness">Witnesses</Link></li>
+                      <li className={this.findLiAssetsState()}><Link onClick={this.toggleAssetsClass} className={this.state.assetsSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/issuedassets">Assets</Link></li>
+                      <li className={this.findLiNodesState()}><Link onClick={this.toggleNodesClass} className={this.state.nodesSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/nodes">Nodes</Link></li>
                   </ul>
 
 
