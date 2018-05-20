@@ -11,10 +11,14 @@
 }
 
 .bcGrey777 {
-    background-color: #555;
+    background-color: #777;
 }
 
 .leftAlign {
+  	float: left;
+}
+
+.centerAlign {
   	float: left;
 }
 
