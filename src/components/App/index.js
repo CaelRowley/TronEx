@@ -27,13 +27,11 @@ class App extends Component {
     }
 
     clickVisualisation() {
-        const currentState = this.state.visualisationSelected;
         this.setState({ visualisationSelected: true });
         this.setState({ blockExplorerSelected: false });
     };
 
     clickBlockExplorer() {
-        const currentState = this.state.blockExplorerSelected;
         this.setState({ blockExplorerSelected: true });
         this.setState({ visualisationSelected: false });
     };
@@ -54,10 +52,8 @@ class App extends Component {
         const visualisationState = this.state.visualisationSelected;
         if(blockExplorerState)
             return 'appLiSelected';
-
         else if(visualisationState)
             return 'appLiOtherSelected';
-
         else
             return 'appLi'
     };
