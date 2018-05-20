@@ -1,3 +1,14 @@
+.appHeader {
+    display:inline-block;
+    color: white;
+    text-align: center;
+    padding: 0.1em 0em;
+    text-decoration: none;
+
+    /* background-color: #555; */
+    border-radius: 5px 5px 0px 0px;
+}
+
 .appNavLink:link {
     text-decoration: none;
 
@@ -77,6 +88,10 @@
     text-decoration: none;
     border-bottom:0.2em solid tomato;
     line-height: 0.8em;
+
+    background-color: #333;
+    text-shadow: 0px -1px 0px rgba(0,0,0,1);
+    border-radius: 5px 5px 0px 0px;
 }
 
 .appLiSelected:hover {

@@ -62,8 +62,8 @@ class App extends Component {
   render() {
     return (
       <div className="textAlignCenter fullContainer">
-        <div className="bcGrey555 colorWhite">
-          <h2 className="textAlignLeft paddingLeft container">TronEx</h2>
+        <div className="bcGrey777 colorWhite">
+          <h2 className="textAlignLeft paddingLeft container appHeader">TronEx</h2>
         </div>
 
         <div className="container">
