@@ -1,53 +1,146 @@
 import React, { Component } from 'react';
 import './style.css';
 
+import {DropdownButton, MenuItem, Row, Col} from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+
 import Service from './../utils/service.js';
 
 class Nodes extends Component {
+    constructor(props){
+        super(props);
 
-    render() {
-    	this.getNodes();
-        return (
-            <div className="Nodes">
-                <div id="searchCount"></div>
-                <div id="searchResult"></div>
-            </div>
-        );
+        this.state = {
+            nodes:[],
+            dropdown:"Select An Item",
+            searchbar:""
+        }
+
+        this.getNodes("nodes","","");
+
+        this.handleDropDownChange = this.handleDropDownChange.bind(this);
+        this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
+        this.handleSearchEvent = this.handleSearchEvent.bind(this);
     }
 
-    getNodes(){
+    handleDropDownChange(event){
+        this.setState({
+            dropdown: event
+        });
+    }
+
+    handleSearchBarChange(event){
+        this.setState({
+            searchbar: event.target.value
+    });
+    }
+
+    handleSearchEvent(event){
+        this.getNodes("nodes", this.state.searchbar, this.state.dropdown);
+    }
+
+    getNodes(type, filter, field){
         var that = this;
 
         var service = new Service();
-        var dataPromise = service.getEntity("nodes", "", "");
+        var dataPromise = service.getEntity(type, filter, field);
         dataPromise.done(function(dataFromPromise) {
             that._displayResponse(dataFromPromise);
         });
     }
 
     _displayResponse(response){
-        var output = "";
-        for (var i = 0; i < response.hits.hits.length; i++) {
-            output += '<div class="jumbotron panel-default">'
-            output += '<h2>' + "Nodes: " + response.hits.hits[i]._id + '</h2>';
-            output += '<ul>'
-            output += "<li>city: " + response.hits.hits[i]._source.city + '</li></br>';
-            output += "<li>continentcode: " + response.hits.hits[i]._source.continentcode + '</li></br>';
-            output += "<li>country: " + response.hits.hits[i]._source.country + '</li></br>';
-            output += "<li>countryname: " + response.hits.hits[i]._source.countryname + '</li></br>';
-            output += "<li>currency: " + response.hits.hits[i]._source.currency + '</li></br>';
-            output += "<li>host: " + response.hits.hits[i]._source.host + '</li></br>';
-            output += "<li>latitude: " + response.hits.hits[i]._source.latitude + '</li></br>';
-            output += "<li>longitude: " + response.hits.hits[i]._source.longitude + '</li></br>';
-            output += "<li>org: " + response.hits.hits[i]._source.org + '</li></br>';
-            output += "<li>port: " + response.hits.hits[i]._source.port + '</li></br>';
-            output += "<li>region: " + response.hits.hits[i]._source.region + '</li></br>';
-            output += "<li>regioncode: " + response.hits.hits[i]._source.regioncode + '</li></br>';
-            output += '</ul>';
-            output += '</div>';
-        }
-        document.getElementById('searchCount').innerHTML = '<h3 class="rightAlignText">' + response.hits.hits.length + ' results</h3>';
-        document.getElementById('searchResult').innerHTML = output;
+        this.setState({
+            nodes:response.hits.hits
+        });
+    }
+
+    render() {
+        return (
+            <div className="Nodes">
+                <Row className="padding boarder-bottom-tron">
+                        <Col xs={12} md={8} >
+                            <div className="leftAlign">
+                                <DropdownButton
+                                        title={this.state.dropdown}
+                                        key={"asd"}
+                                        id={"type"}
+                                        bsStyle="default"
+                                        onChange={this.handleDropDownChange}>
+                                    <MenuItem eventKey="host" onSelect={this.handleDropDownChange}>host</MenuItem>
+                                    <MenuItem eventKey="country" onSelect={this.handleDropDownChange}>country</MenuItem>
+                                    <MenuItem eventKey="city" onSelect={this.handleDropDownChange}>city</MenuItem>
+                                    <MenuItem eventKey="countryname" onSelect={this.handleDropDownChange}>countryname</MenuItem>
+                                    <MenuItem eventKey="region" onSelect={this.handleDropDownChange}>region</MenuItem>
+                                    {/*<MenuItem divider />
+                                    <MenuItem eventKey="4">Separated link</MenuItem>*/}
+                                </DropdownButton>
+                            </div>
+
+                            <div className="paddingLeft">
+                                <input
+                                    type="input"
+                                    className="witnessSearchBar"
+                                    placeholder="Enter Search Term.... "
+                                    onChange={this.handleSearchBarChange}
+                                />
+                            </div>
+                        </Col>
+
+                        <Col xs={6} md={4}>
+
+
+                            <div className="btn">Results: {this.state.nodes.length}</div>
+
+                            <input
+                                type="submit"
+                                value="Search"
+                                className="btn btn-light rightAlign witnessRightAlignPadding"
+                                placeholder=""
+                                onClick={this.handleSearchEvent}
+                            />
+                         </Col>
+
+
+                </Row>
+                <div className="">
+                    <WitnessTable nodes={this.state.nodes}/>
+                </div>
+            </div>
+        );
+    }
+}
+
+class WitnessTable extends React.Component {
+    render(){
+        return(
+            <table id="nodesTable padding">
+                <tbody>
+                    <tr>
+                        <th className="tableTitle textAlignCenter">#</th>
+                        <th className="tableTitle textAlignCenter">host</th>
+                        <th className="tableTitle textAlignCenter">country</th>
+                        <th className="tableTitle textAlignCenter">city</th>
+                        <th className="tableTitle textAlignCenter">countryname</th>
+                        <th className="tableTitle textAlignCenter">region</th>
+                    </tr>
+                    {
+                        this.props.nodes.map((nodes, index) => {
+                            var output =
+                            <tr key={nodes._source.host}>
+                                <td className="tableRowHeight">{index +1}</td>
+                                <td><Link className="tableLink" to={`/blockchainexplorer/nodes/${nodes._source.host}`}>{nodes._source.host}</Link></td>
+                                <td>{nodes._source.country}</td>
+                                <td>{nodes._source.city}</td>
+                                <td>{nodes._source.countryname}</td>
+                                <td>{nodes._source.region}</td>
+                            </tr>
+                            return output;
+                        })
+                    }
+                </tbody>
+            </table>
+        )
     }
 }
 

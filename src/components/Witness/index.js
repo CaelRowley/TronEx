@@ -34,6 +34,20 @@ class Witness extends Component {
         this.setState({
             searchbar: event.target.value
         });
+
+                  // GET /_search
+        // {
+        //     "query": {
+        //         "range" : {
+        //             "transactionsCount": {
+        //                 "gte": "2"
+        //             }
+        //         }
+        //     }
+        // }
+
+        // {"size":500,"query":{"bool":{"must":[{"multi_match":{"query":"2","fields":["transactionsCount"]}},{"multi_match":{"query":"27TuHmwzNFmCVAXyLh28Ly1keFmCPbzLhcd","fields":["transactions.0.toaddress"]}}]}}}
+
     }
 
     handleSearchEvent(event){
