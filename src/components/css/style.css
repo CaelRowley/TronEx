@@ -72,6 +72,10 @@
     width: 100%;
 }
 
+.tableTitle {
+	color: bold;
+}
+
 .tableRowHeight {
 	line-height: 2em
 }
@@ -81,12 +85,59 @@
 	width: 80%;
 }
 
+.tableLink{
+	color: #D61719;
+	/* color: tomato; */
+}
+
+.tableLink:link {
+    text-decoration: none;
+
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    -ms-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
+}
+
+.tableLink:hover {
+    cursor: pointer;
+	color: #D61719;
+    text-shadow: 0px 0px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.1),0 -4px 15px rgba(255,50,50,0.1);
+}
+
+.tableUrl{
+	color: #D61719;
+	/* color: tomato; */
+}
+
+.tableUrl:link {
+    -webkit-transition: color 0.3s ease-out;
+    -moz-transition: color 0.3s ease-out;
+    -o-transition: color 0.3s ease-out;
+    -ms-transition: color 0.3s ease-out;
+    transition: color 0.3s ease-out;
+}
+
+.tableUrl:hover {
+    cursor: pointer;
+	color: #D61719;
+    /* color: tomato; */
+}
+
 td, th {
     border: 1px solid #555555;
     text-align: left;
     padding: 8px;
 }
 
+tr:nth-child(odd) {
+    /* background-color: #FFF; */
+	background-color: #FFFACD;
+
+}
+
 tr:nth-child(even) {
-    background-color: #999999;
+    /* background-color: #DDD; */
+	background-color: #ffcc99;
 }

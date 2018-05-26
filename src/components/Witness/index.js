@@ -67,7 +67,7 @@ class Witness extends Component {
                             <div className="paddingLeft">
                                 <input
                                     type="input"
-                                    className="searchBar"
+                                    className="witnessSearchBar"
                                     placeholder="Enter Search Term.... "
                                     onChange={this.handleSearchBarChange}
                                 />
@@ -77,7 +77,7 @@ class Witness extends Component {
                         <Col xs={6} md={4}>
 
 
-                            <div className="btn btn-light rightAlign witnessRightAlignPadding">Results: {this.state.witnesses.length}</div>
+                            <div className="btn">Results: {this.state.witnesses.length}</div>
 
                             <input
                                 type="submit"
@@ -124,23 +124,23 @@ class WitnessTable extends React.Component {
             <table id="witnessTable padding">
                 <tbody>
                     <tr>
-                        <th>#</th>
-                        <th>Address</th>
-                        <th>Vote Count</th>
-                        <th>Site Name</th>
-                        <th>Total Produced</th>
-                        <th>Total Missed</th>
-                        <th>Latest Block</th>
-                        <th>Latest Slot</th>
+                        <th className="tableTitle textAlignCenter">#</th>
+                        <th className="tableTitle textAlignCenter">Address</th>
+                        <th className="tableTitle textAlignCenter">Vote Count</th>
+                        <th className="tableTitle textAlignCenter">Site Name</th>
+                        <th className="tableTitle textAlignCenter">Total Produced</th>
+                        <th className="tableTitle textAlignCenter">Total Missed</th>
+                        <th className="tableTitle textAlignCenter">Latest Block</th>
+                        <th className="tableTitle textAlignCenter">Latest Slot</th>
                     </tr>
                     {
                         this.props.witnesses.map((witness, index) => {
                             var output =
                             <tr key={witness._source.address}>
                                 <td className="tableRowHeight">{index +1}</td>
-                                <td><Link to={`/blockchainexplorer/witness/${witness._source.address}`}>{witness._source.address}</Link></td>
+                                <td><Link className="tableLink" to={`/blockchainexplorer/witness/${witness._source.address}`}>{witness._source.address}</Link></td>
                                 <td>{witness._source.voteCount}</td>
-                                <td><Link to="{witness._source.url}">{witness._source.url}</Link></td>
+                                <td><Link className="tableUrl" to="{witness._source.url}">{witness._source.url}</Link></td>
                                 <td>{witness._source.totalProduced}</td>
                                 <td>{witness._source.totalMissed}</td>
                                 <td>{witness._source.latestBlockNum}</td>
