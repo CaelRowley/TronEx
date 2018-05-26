@@ -50,6 +50,7 @@
     list-style-type: none;
     overflow: hidden;
     background-color: #333;
+    /* margin-top: -16px; */
 }
 
 .blockExplorerLi {
@@ -76,6 +77,7 @@
     padding: 0.5em 5em;
     text-decoration: none;
     border-bottom:0.2em solid tomato;
+    /* margin-top: -16px; */
     line-height: 0.8em;
 
     background-color: #111;
@@ -96,6 +98,7 @@
     text-align: center;
     padding: 0.5em 5em;
     text-decoration: none;
+    /* margin-top: -16px; */
 }
 
 .blockExplorerLiOtherSelected:hover {
