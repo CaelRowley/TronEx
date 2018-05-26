@@ -113,7 +113,7 @@
 
 .appLi:hover {
     color: red;
-    background-color: #333;
+    background-color: #555;
     text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
     border-bottom:0.1em solid tomato;
     line-height: 1.3em;
@@ -129,14 +129,14 @@
     border-bottom:0.1em solid tomato;
     line-height: 1.3em;
 
-    background-color: #333;
+    background-color: #555;
     text-shadow: 0px -1px 0px rgba(0,0,0,1);
     border-radius: 5px 5px 0px 0px;
 }
 
 .appLiSelected:hover {
     color: red;
-    background-color: #333;
+    background-color: #555;
     text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
     border-radius: 5px 5px 0px 0px;
 }
@@ -151,7 +151,7 @@
 
 .appLiOtherSelected:hover {
     color: red;
-    background-color: #555;
+    background-color: #777;
     border-bottom:-1.1em solid darkred;
     /* line-height: 1.28em; */
     text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
