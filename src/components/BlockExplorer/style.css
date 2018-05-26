@@ -47,12 +47,14 @@
 }
 
 .blockExplorerUl {
+    margin-top: -10px;
     list-style-type: none;
     overflow: hidden;
-    background-color: #333;
+    background-color: #555;
 }
 
 .blockExplorerLi {
+    /* margin-top: -1px; */
     display:inline-block;
     color: white;
     text-align: center;
@@ -62,15 +64,15 @@
 
 .blockExplorerLi:hover {
     color: red;
-    background-color: #111;
+    background-color: #333;
     text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
-    border-bottom:0.2em solid tomato;
-    line-height: 0.8em;
+    border-bottom:0.1em solid tomato;
+    line-height: 1.2em;
     border-radius: 5px 5px 0px 0px;
 }
 
 .blockExplorerLiSelected {
-    display:inline-block;
+    /* display:inline-block;
     color: white;
     text-align: center;
     padding: 0.5em 5em;
@@ -80,12 +82,25 @@
 
     background-color: #111;
     text-shadow: 0px -1px 0px rgba(0,0,0,1);
+    border-radius: 5px 5px 0px 0px; */
+    /* margin-top: -200px; */
+
+    display:inline-block;
+    color: white;
+    text-align: center;
+    padding: 0.5em 5em;
+    text-decoration: none;
+    border-bottom:0.1em solid tomato;
+    line-height: 1.2em;
+
+    background-color: #333;
+    text-shadow: 0px -1px 0px rgba(0,0,0,1);
     border-radius: 5px 5px 0px 0px;
 }
 
 .blockExplorerLiSelected:hover {
     color: red;
-    background-color: #111;
+    background-color: #333;
     text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
     border-radius: 5px 5px 0px 0px;
 }
@@ -96,11 +111,12 @@
     text-align: center;
     padding: 0.5em 5em;
     text-decoration: none;
+    /* margin-top: -16px; */
 }
 
 .blockExplorerLiOtherSelected:hover {
     color: red;
-    background-color: #111;
+    background-color: #444;
     text-shadow: 0px -1px 0px rgba(0,0,0,1), 0 0 5px rgba(255,50,50,0.4),0 -4px 15px rgba(255,50,50,0.2);
     border-radius: 5px 5px 0px 0px;
 }

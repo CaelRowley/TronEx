@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './style.css';
 import '../css/style.css';
+import tronExTitle from './TronExTitle.png';
 
 import Visualisation from './../Visualisation';
 import BlockExplorer from './../BlockExplorer';
@@ -18,6 +18,7 @@ class App extends Component {
         this.state = {
             visualisationSelected: false,
             blockExplorerSelected: false,
+            backgroundImage: "url('https://www.colorhexa.com/333333.png')",
         };
 
         this.clickVisualisation= this.clickVisualisation.bind(this);
@@ -61,43 +62,55 @@ class App extends Component {
 
   render() {
     return (
-      <div className="textAlignCenter fullContainer">
-        <div className="bcGrey777 colorWhite">
-          <h2 className="textAlignLeft paddingLeft container appHeader">TronEx</h2>
-        </div>
+          <div className="textAlignCenter fullContainer" style={{backgroundImage: this.state.backgroundImage}}>
+            <div className="bcGrey777 colorWhite">
+              {// <h2 className="textAlignLeft paddingLeft container appHeader">TronEx</h2>
+          }
+              <ul className="appUlHeader">
+                  <li className="liHeaderTextPadding">_</li>
+                  <li className="liHeaderText">
+                  {
+                    // <img src="https://tron.network/static/images/logo.png" alt="logo" />
+                }
+                <img src={tronExTitle} alt="TronEx" />
 
-        <div className="container">
-          <Router>
-            <div>
-
-            <ul className="appUl">
-                <li className={this.findLiVisualisationState()}><Link onClick={this.clickVisualisation} className={this.state.visualisationSelected ? 'appNavLinkSelected': 'appNavLink'} to="/visualisation">Visualisation</Link></li>
-                <li className={this.findLiBlockExplorerState()}><Link onClick={this.clickBlockExplorer} className={this.state.blockExplorerSelected ? 'appNavLinkSelected': 'appNavLink'} to="/blockchainexplorer">BlockExplorer</Link></li>
-            </ul>
-
-              <Route exact path="/visualisation" component={Visualisation}/>
-              <Route exact path="/blockchainexplorer" component={BlockExplorer}/>
-
-              {/*<Route exact path="/block" render={() => (
-                <h3>Please select a blockHash.</h3>
-              )}/>*/}
-
-            {/*  <Route exact path="/witness" render={() => (
-                <h3>Please select a blockHash.</h3>
-              )}/>*/}
-
-              {/*<Route path="/block/:blockHash" component={Block}/>*/}
+                  </li>
+              </ul>
             </div>
-          </Router>
-         {/* </div>*/}
-        </div>
-        <footer className="footer">
-          <div className="App-header">
-            <h2 className="tronText container">TronEx</h2>
-          </div>
-        </footer>
-      </div>
 
+
+                <div className="container">
+
+                  <Router>
+                    <div>
+
+                    <ul className="appUl">
+                        <li className={this.findLiVisualisationState()}><Link onClick={this.clickVisualisation} className={this.state.visualisationSelected ? 'appNavLinkSelected': 'appNavLink'} to="/visualisation">Visualisation</Link></li>
+                        <li className={this.findLiBlockExplorerState()}><Link onClick={this.clickBlockExplorer} className={this.state.blockExplorerSelected ? 'appNavLinkSelected': 'appNavLink'} to="/blockchainexplorer">BlockExplorer</Link></li>
+                    </ul>
+
+                      <Route exact path="/visualisation" component={Visualisation}/>
+                      <Route exact path="/blockchainexplorer" component={BlockExplorer}/>
+
+                      {/*<Route exact path="/block" render={() => (
+                        <h3>Please select a blockHash.</h3>
+                      )}/>*/}
+
+                    {/*  <Route exact path="/witness" render={() => (
+                        <h3>Please select a blockHash.</h3>
+                      )}/>*/}
+
+                      {/*<Route path="/block/:blockHash" component={Block}/>*/}
+                    </div>
+                  </Router>
+                 {/* </div>*/}
+                </div>
+                <footer className="footer">
+                  <div className="App-header">
+                    <h2 className="tronText container">TronEx</h2>
+                  </div>
+                </footer>
+              </div>
     );
   }
 }
