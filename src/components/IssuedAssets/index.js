@@ -118,28 +118,6 @@ class IssuedAssets extends Component {
         });
 
         console.log(this.state.issuedassets);
-
-        // var output = '';
-        // for (var i = 0; i < response.hits.hits.length; i++) {
-        //     output += '<div class="jumbotron panel-default">'
-        //     output += '<h2>' + "Issued Assets: " + response.hits.hits[i]._source.name + '</h2>';
-        //     output += '<ul>'
-        //     output += "<li>ownerAddress: " + response.hits.hits[i]._source.ownerAddress + '</li></br>';
-        //     output += "<li>name: " + response.hits.hits[i]._source.name + '</li></br>';
-        //     output += "<li>totalSupply: " + response.hits.hits[i]._source.totalSupply + '</li></br>';
-        //     output += "<li>trxNum: " + response.hits.hits[i]._source.trxNum + '</li></br>';
-        //     output += "<li>num: " + response.hits.hits[i]._source.num + '</li></br>';
-        //     output += "<li>startTime: " + response.hits.hits[i]._source.startTime + '</li></br>';
-        //     output += "<li>endTime: " + response.hits.hits[i]._source.endTime + '</li></br>';
-        //     output += "<li>decayRatio: " + response.hits.hits[i]._source.decayRatio + '</li></br>';
-        //     output += "<li>voteScore: " + response.hits.hits[i]._source.voteScore + '</li></br>';
-        //     output += "<li>description: " + response.hits.hits[i]._source.description + '</li></br>';
-        //     output += "<li>url: " + response.hits.hits[i]._source.url + '</li></br>';
-        //     output += '</ul>';
-        //     output += '</div>';
-        // }
-        // document.getElementById('searchCount').innerHTML = '<h3 class="rightAlignText">' + response.hits.hits.length + ' results</h3>';
-        // document.getElementById('searchResult').innerHTML = output;
     }
 }
 class IssuedAssetsTable extends React.Component {
