@@ -2,3 +2,9 @@
     width: 30%;
     padding-right: 1.3em;
 }
+
+.witnessSearchBar{
+    height: 2.4em;
+    /* float: left; */
+	width: 80%;
+}
