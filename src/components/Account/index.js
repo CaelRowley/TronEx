@@ -91,18 +91,18 @@ class Account extends Component {
 
 
                     </Row>
-                    <div className="padding">
+                    <div className="">
                         <AccountTable accounts={this.state.accounts}/>
                     </div>
                 </div>
             );
     }
 
-    getAccounts(){
+    getAccounts(type, filter, field){
         var that = this;
 
         var service = new Service();
-        var dataPromise = service.getEntity("accounts", "", "");
+        var dataPromise = service.getEntity(type, filter, field);
         dataPromise.done(function(dataFromPromise) {
             that._displayResponse(dataFromPromise);
         });
