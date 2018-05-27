@@ -18,7 +18,8 @@ class App extends Component {
         this.state = {
             visualisationSelected: false,
             blockExplorerSelected: false,
-            backgroundImage: "url('https://www.colorhexa.com/333333.png')",
+            // backgroundImage: "url('https://www.colorhexa.com/333333.png')",
+            backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5D4FnPsyagcVIw4XTFBryD7wnv7fsFZsAf_M2G2-c-2IpnX5b')",            
         };
 
         this.clickVisualisation= this.clickVisualisation.bind(this);
@@ -68,13 +69,7 @@ class App extends Component {
           }
               <ul className="appUlHeader">
                   <li className="liHeaderTextPadding">_</li>
-                  <li className="liHeaderText">
-                  {
-                    // <img src="https://tron.network/static/images/logo.png" alt="logo" />
-                }
-                <img src={tronExTitle} alt="TronEx" />
 
-                  </li>
               </ul>
             </div>
 
@@ -85,6 +80,7 @@ class App extends Component {
                     <div>
 
                     <ul className="appUl">
+                        <li className="tronTitle"><img src={tronExTitle} alt="TronEx" /></li>
                         <li className={this.findLiVisualisationState()}><Link onClick={this.clickVisualisation} className={this.state.visualisationSelected ? 'appNavLinkSelected': 'appNavLink'} to="/visualisation">Visualisation</Link></li>
                         <li className={this.findLiBlockExplorerState()}><Link onClick={this.clickBlockExplorer} className={this.state.blockExplorerSelected ? 'appNavLinkSelected': 'appNavLink'} to="/blockchainexplorer">BlockExplorer</Link></li>
                     </ul>
