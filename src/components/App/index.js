@@ -68,13 +68,7 @@ class App extends Component {
           }
               <ul className="appUlHeader">
                   <li className="liHeaderTextPadding">_</li>
-                  <li className="liHeaderText">
-                  {
-                    // <img src="https://tron.network/static/images/logo.png" alt="logo" />
-                }
-                <img src={tronExTitle} alt="TronEx" />
 
-                  </li>
               </ul>
             </div>
 
@@ -85,6 +79,7 @@ class App extends Component {
                     <div>
 
                     <ul className="appUl">
+                        <li className="tronTitle"><img src={tronExTitle} alt="TronEx" /></li>
                         <li className={this.findLiVisualisationState()}><Link onClick={this.clickVisualisation} className={this.state.visualisationSelected ? 'appNavLinkSelected': 'appNavLink'} to="/visualisation">Visualisation</Link></li>
                         <li className={this.findLiBlockExplorerState()}><Link onClick={this.clickBlockExplorer} className={this.state.blockExplorerSelected ? 'appNavLinkSelected': 'appNavLink'} to="/blockchainexplorer">BlockExplorer</Link></li>
                     </ul>
