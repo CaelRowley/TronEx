@@ -126,28 +126,31 @@
 }
 
 td, th {
-    border: 1px solid #555555;
+    border-left: 1px solid #BBB;
+	border-right: 1px solid #BBB;
+
+
     text-align: left;
     padding: 8px;
 }
 
 tr:nth-child(odd) {
-    /* background-color: #FFF; */
-	background-color: #FFFACD;
+    background-color: #FFF;
+	/* background-color: #FFFACD; */
+	/* background-color: #287BBF; */
 	opacity: 0.95;
-
-
 }
 
 tr:nth-child(even) {
-    /* background-color: #DDD; */
-	background-color: #ffcc99;
+    background-color: #DDD;
+	/* background-color: #ffcc99; */
+	/* background-color: #F8CBFF; */
 	opacity: 0.95;
 
 }
 
 tr:hover {
     /* background-color: #DDD; */
-/* filter: brightness(85%); */
-opacity: 0.8;
+	/* filter: brightness(85%); */
+	opacity: 0.85;
 }
