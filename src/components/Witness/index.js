@@ -91,7 +91,7 @@ class Witness extends Component {
                         <Col xs={6} md={4}>
 
 
-                            <div className="btn">Results: {this.state.witnesses.length}</div>
+                            <div className="btn witnessResults">Results: {this.state.witnesses.length}</div>
 
                             <input
                                 type="submit"
