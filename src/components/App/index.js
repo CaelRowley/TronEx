@@ -18,7 +18,8 @@ class App extends Component {
         this.state = {
             visualisationSelected: false,
             blockExplorerSelected: false,
-            backgroundImage: "url('https://www.colorhexa.com/333333.png')",
+            // backgroundImage: "url('https://www.colorhexa.com/333333.png')",
+            backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5D4FnPsyagcVIw4XTFBryD7wnv7fsFZsAf_M2G2-c-2IpnX5b')",            
         };
 
         this.clickVisualisation= this.clickVisualisation.bind(this);

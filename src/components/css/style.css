@@ -86,8 +86,8 @@
 }
 
 .tableLink{
-	color: #D61719;
-	/* color: tomato; */
+	/* color: #D61719; */
+	color: black;
 }
 
 .tableLink:link {
@@ -134,10 +134,20 @@ td, th {
 tr:nth-child(odd) {
     /* background-color: #FFF; */
 	background-color: #FFFACD;
+	opacity: 0.95;
+
 
 }
 
 tr:nth-child(even) {
     /* background-color: #DDD; */
 	background-color: #ffcc99;
+	opacity: 0.95;
+
+}
+
+tr:hover {
+    /* background-color: #DDD; */
+/* filter: brightness(85%); */
+opacity: 0.8;
 }

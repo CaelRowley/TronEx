@@ -135,7 +135,8 @@ class AccountTable extends React.Component {
                             var output =
                             <tr key={account._source.address}>
                                 <td className="tableRowHeight">{index +1}</td>
-                                <td><Link to={`/blockchainexplorer/account/${account._source.address}`}>{account._source.address}</Link></td>
+                                <td><Link className="tableLink" to={`/blockchainexplorer/account/${account._source.address}`}>{account._source.address}</Link></td>
+
                                 <td>{account._source.balance}</td>
 
                                 <td>{account._source.type}</td>
