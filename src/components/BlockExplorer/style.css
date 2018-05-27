@@ -48,6 +48,8 @@
 }
 
 .blockExplorerUl {
+    opacity: 0.85;
+
     margin-top: -10px;
     list-style-type: none;
     overflow: hidden;

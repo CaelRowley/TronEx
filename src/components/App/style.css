@@ -1,8 +1,10 @@
 /* background-color: #FFFACD;
 background-color: #ffcc99; */
+/* url(http://i0.kym-cdn.com/photos/images/newsfeed/001/196/474/246.gif) */
+
 .backGround{
   background:
-    url("TronExWallPaper.jpg")
+    url("./tronWallPaperCatTron.gif")
     no-repeat
     center center
     fixed;
@@ -124,6 +126,7 @@ background-color: #ffcc99; */
 }
 
 .appUl {
+    opacity: 0.75;
     margin-top: -10px;
     list-style-type: none;
     overflow: hidden;
