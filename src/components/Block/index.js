@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import '../css/style.css';
 
 import {DropdownButton, MenuItem, Row, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
@@ -23,7 +24,7 @@ class Block extends Component {
         this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
 		this.handleSearchEvent = this.handleSearchEvent.bind(this);
 	}
-	
+
 	handleDropDownChange(event){
         this.setState({
             dropdown: event
@@ -59,25 +60,26 @@ class Block extends Component {
     }
 
 	render() {
-		
+
 		return (
 			<div className="Block">
-				<Row className="padding boarder-bottom-tron">
+				<Row className="padding boarder-bottom-tron componentTableHeader">
 	                <Col xs={12} md={8} >
-	                    <div className="leftAlign">
+	                    <div className="leftAlign dropDown">
 	                        <DropdownButton
+									classname="dropDown"
 	                                title={this.state.dropdown}
 	                                key={"asd"}
 	                                id={"type"}
 	                                bsStyle="default"
 	                                onChange={this.handleDropDownChange}>
-	                            <MenuItem eventKey="number" onSelect={this.handleDropDownChange}>number</MenuItem>
-	                            <MenuItem eventKey="hash" onSelect={this.handleDropDownChange}>hash</MenuItem>
-	                            <MenuItem eventKey="parentHash" onSelect={this.handleDropDownChange}>parentHash</MenuItem>
-	                            <MenuItem eventKey="witnessAddress" onSelect={this.handleDropDownChange}>witnessAddress</MenuItem>
-	                            <MenuItem eventKey="transactionsCount" onSelect={this.handleDropDownChange}>Total Missed</MenuItem>
-	                            <MenuItem eventKey="transactionsTotal" onSelect={this.handleDropDownChange}>Latest Block Number</MenuItem>
-	                            
+	                            <MenuItem classname="dropDown" eventKey="number" onSelect={this.handleDropDownChange}>number</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="hash" onSelect={this.handleDropDownChange}>hash</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="parentHash" onSelect={this.handleDropDownChange}>parentHash</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="witnessAddress" onSelect={this.handleDropDownChange}>witnessAddress</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="transactionsCount" onSelect={this.handleDropDownChange}>Total Missed</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="transactionsTotal" onSelect={this.handleDropDownChange}>Latest Block Number</MenuItem>
+
 	                            {/*<MenuItem divider />
 	                            <MenuItem eventKey="4">Separated link</MenuItem>*/}
 	                        </DropdownButton>
@@ -96,7 +98,7 @@ class Block extends Component {
 	                <Col xs={6} md={4}>
 
 
-	                    <div className="btn">Results: {this.state.blocks.length}</div>
+	                    <div className="btn resultsText">Results: {this.state.blocks.length}</div>
 
 	                    <input
 	                        type="submit"

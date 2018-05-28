@@ -48,7 +48,7 @@
 }
 
 .blockExplorerUl {
-    opacity: 0.85;
+    opacity: 0.90;
 
     margin-top: -10px;
     list-style-type: none;
@@ -75,7 +75,7 @@
 }
 
 .blockExplorerLiSelected {
-    opacity: 0.85;
+    opacity: 0.95;
     /* display:inline-block;
     color: white;
     text-align: center;

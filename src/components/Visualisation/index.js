@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import '../css/style.css';
 
 import Service from './../utils/service.js';
 
