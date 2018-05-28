@@ -58,12 +58,12 @@ class IssuedAssets extends Component {
                                     id={"type"}
                                     bsStyle="default"
                                     onChange={this.handleDropDownChange}>
-                                <MenuItem eventKey="name" onSelect={this.handleDropDownChange}>name</MenuItem>
-                                <MenuItem eventKey="ownerAddress" onSelect={this.handleDropDownChange}>ownerAddress</MenuItem>
-                                <MenuItem eventKey="totalSupply" onSelect={this.handleDropDownChange}>totalSupply</MenuItem>
-                                <MenuItem eventKey="startTime" onSelect={this.handleDropDownChange}>startTime</MenuItem>
-                                <MenuItem eventKey="endTime" onSelect={this.handleDropDownChange}>endTime</MenuItem>
-                                <MenuItem eventKey="url" onSelect={this.handleDropDownChange}>url</MenuItem>
+                                <MenuItem eventKey="name" onSelect={this.handleDropDownChange}>Name</MenuItem>
+                                <MenuItem eventKey="ownerAddress" onSelect={this.handleDropDownChange}>Owner Address</MenuItem>
+                                <MenuItem eventKey="totalSupply" onSelect={this.handleDropDownChange}>Total Supply</MenuItem>
+                                <MenuItem eventKey="startTime" onSelect={this.handleDropDownChange}>Start Time</MenuItem>
+                                <MenuItem eventKey="endTime" onSelect={this.handleDropDownChange}>End Time</MenuItem>
+                                <MenuItem eventKey="url" onSelect={this.handleDropDownChange}>Site Name</MenuItem>
 
                                 {/*<MenuItem divider />
                                 <MenuItem eventKey="4">Separated link</MenuItem>*/}
@@ -125,15 +125,15 @@ class IssuedAssets extends Component {
 class IssuedAssetsTable extends React.Component {
     render(){
         return(
-            <table id="issuedAssetsTable padding">
+            <table id="issuedAssetsTable" className="tableWidth">
                 <tbody>
                     <tr>
                         <th className="tableTitle textAlignCenter">#</th>
-                        <th className="tableTitle textAlignCenter">ownerAddress</th>
-                        <th className="tableTitle textAlignCenter">name</th>
-                        <th className="tableTitle textAlignCenter">totalSupply</th>
-                        <th className="tableTitle textAlignCenter">startTime</th>
-                        <th className="tableTitle textAlignCenter">endTime</th>
+                        <th className="tableTitle textAlignCenter">Owner Address</th>
+                        <th className="tableTitle textAlignCenter">Name</th>
+                        <th className="tableTitle textAlignCenter">Total Supply</th>
+                        <th className="tableTitle textAlignCenter">Start Time</th>
+                        <th className="tableTitle textAlignCenter">End Time</th>
                         <th className="tableTitle textAlignCenter">Site Name</th>
                     </tr>
                     {

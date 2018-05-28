@@ -58,7 +58,7 @@ class Nodes extends Component {
 
     render() {
         return (
-            <div className="Nodes dropDown">
+            <div className="Nodes">
                 <Row className="padding boarder-bottom-tron componentTableHeader">
                         <Col xs={12} md={8} >
                             <div className="leftAlign">
@@ -68,11 +68,11 @@ class Nodes extends Component {
                                         id={"type"}
                                         bsStyle="default"
                                         onChange={this.handleDropDownChange}>
-                                    <MenuItem eventKey="host" onSelect={this.handleDropDownChange}>host</MenuItem>
-                                    <MenuItem eventKey="country" onSelect={this.handleDropDownChange}>country</MenuItem>
-                                    <MenuItem eventKey="city" onSelect={this.handleDropDownChange}>city</MenuItem>
-                                    <MenuItem eventKey="countryname" onSelect={this.handleDropDownChange}>countryname</MenuItem>
-                                    <MenuItem eventKey="region" onSelect={this.handleDropDownChange}>region</MenuItem>
+                                    <MenuItem eventKey="host" onSelect={this.handleDropDownChange}>Host</MenuItem>
+                                    <MenuItem eventKey="country" onSelect={this.handleDropDownChange}>Country</MenuItem>
+                                    <MenuItem eventKey="city" onSelect={this.handleDropDownChange}>City</MenuItem>
+                                    <MenuItem eventKey="countryname" onSelect={this.handleDropDownChange}>Country Name</MenuItem>
+                                    <MenuItem eventKey="region" onSelect={this.handleDropDownChange}>Region</MenuItem>
                                     {/*<MenuItem divider />
                                     <MenuItem eventKey="4">Separated link</MenuItem>*/}
                                 </DropdownButton>
@@ -115,15 +115,15 @@ class Nodes extends Component {
 class WitnessTable extends React.Component {
     render(){
         return(
-            <table id="nodesTable padding">
+            <table id="nodesTable" className="tableWidth">
                 <tbody>
                     <tr>
                         <th className="tableTitle textAlignCenter">#</th>
-                        <th className="tableTitle textAlignCenter">host</th>
-                        <th className="tableTitle textAlignCenter">country</th>
-                        <th className="tableTitle textAlignCenter">city</th>
-                        <th className="tableTitle textAlignCenter">countryname</th>
-                        <th className="tableTitle textAlignCenter">region</th>
+                        <th className="tableTitle textAlignCenter">Host</th>
+                        <th className="tableTitle textAlignCenter">Country</th>
+                        <th className="tableTitle textAlignCenter">City</th>
+                        <th className="tableTitle textAlignCenter">Country Name</th>
+                        <th className="tableTitle textAlignCenter">Region</th>
                     </tr>
                     {
                         this.props.nodes.map((nodes, index) => {

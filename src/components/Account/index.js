@@ -48,15 +48,16 @@ class Account extends Component {
                             <Col xs={12} md={8} >
                                 <div className="leftAlign dropDown">
                                     <DropdownButton
+                                            classname="dropDown"
                                             title={this.state.dropdown}
                                             key={"asd"}
                                             id={"type"}
-                                            bsStyle="btn-light"
+                                            bsStyle="default"
                                             onChange={this.handleDropDownChange}>
                                         <MenuItem eventKey="address" onSelect={this.handleDropDownChange}>Address</MenuItem>
                                         <MenuItem eventKey="balance" onSelect={this.handleDropDownChange}>Balance</MenuItem>
                                         <MenuItem eventKey="type" onSelect={this.handleDropDownChange}>Type</MenuItem>
-                                        <MenuItem eventKey="latestoprationtime" onSelect={this.handleDropDownChange}>latestoprationtime</MenuItem>
+                                        <MenuItem eventKey="latestoprationtime" onSelect={this.handleDropDownChange}>Latest Operation Time</MenuItem>
                                         {/*<MenuItem eventKey="totalMissed" onSelect={this.handleDropDownChange}>Total Missed</MenuItem>
                                         <MenuItem eventKey="latestBlockNum" onSelect={this.handleDropDownChange}>Latest Block Number</MenuItem>
                                         <MenuItem eventKey="latestsLotNum" onSelect={this.handleDropDownChange}>Latest Slot Number</MenuItem>*/}
@@ -68,7 +69,7 @@ class Account extends Component {
                                 <div className="paddingLeft">
                                     <input
                                         type="input"
-                                        className="searchBar"
+                                        className="witnessSearchBar"
                                         placeholder="Enter Search Term.... "
                                         onChange={this.handleSearchBarChange}
                                     />
@@ -77,16 +78,16 @@ class Account extends Component {
 
                             <Col xs={6} md={4}>
 
+                            <div className="btn btn-light  accountRightAlignPadding resultsText">Results: {this.state.accounts.length}</div>
 
-                                <div className="btn btn-light rightAlign accountRightAlignPadding resultsText">Results: {this.state.accounts.length}</div>
+                            <input
+                                type="submit"
+                                value="Search"
+                                className="btn btn-light accountRightAlignPadding rightAlign"
+                                placeholder=""
+                                onClick={this.handleSearchEvent}
+                            />
 
-                                <input
-                                    type="submit"
-                                    value="Search"
-                                    className="btn btn-light rightAlign accountRightAlignPadding"
-                                    placeholder=""
-                                    onClick={this.handleSearchEvent}
-                                />
                              </Col>
 
 
@@ -118,15 +119,15 @@ class Account extends Component {
 class AccountTable extends React.Component {
     render(){
         return(
-            <table id="witnessTable padding">
+            <table id="accountTable" className="tableWidth">
                 <tbody>
                     <tr>
-                        <th>#</th>
-                        <th>Address</th>
-                        <th>balance</th>
+                        <th className="tableTitle textAlignCenter">#</th>
+                        <th className="tableTitle textAlignCenter">Address</th>
+                        <th className="tableTitle textAlignCenter">Balance</th>
                         {/*<th>accountname</th>*/}
-                        <th>type</th>
-                        <th>latestoprationtime</th>
+                        <th className="tableTitle textAlignCenter">Type</th>
+                        <th className="tableTitle textAlignCenter">Latest Operation Time</th>
                         {/*<th>voteslist</th>
                         <th>assetmap</th>*/}
                     </tr>

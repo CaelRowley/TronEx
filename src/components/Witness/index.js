@@ -104,7 +104,7 @@ class Witness extends Component {
 
 
                 </Row>
-                <div className="padding">
+                <div className="">
                     <WitnessTable witnesses={this.state.witnesses}/>
                 </div>
             </div>
@@ -135,7 +135,7 @@ class Witness extends Component {
 class WitnessTable extends React.Component {
     render(){
         return(
-            <table id="witnessTable padding">
+            <table id="witnessTable" className="tableWidth">
                 <tbody>
                     <tr>
                         <th className="tableTitle textAlignCenter">#</th>

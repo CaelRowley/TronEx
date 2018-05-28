@@ -116,12 +116,12 @@
     transition: color 0.3s ease-out;
 }
 
-.dropDown {
+/* .dropDown {
 	color: blue;
 	position: relative;
 	z-index: 1000;
 	overflow: visible;
-}
+} */
 
 .tableUrl:hover {
     cursor: pointer;
@@ -140,7 +140,7 @@
     margin-top: -0.75em;
     margin-left: 0em;
     margin-right: 0em;
-    opacity:0.90;
+    opacity:1;
 }
 
 td, th {
@@ -171,4 +171,12 @@ tr:hover {
     /* background-color: #DDD; */
 	/* filter: brightness(95%); */
 	opacity: 0.85;
+}
+
+.resultsText:hover{
+	color:white;
+}
+
+.tableWidth {
+    width:100%;
 }

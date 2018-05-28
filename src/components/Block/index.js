@@ -14,7 +14,7 @@ class Block extends Component {
 		this.state = {
 			blocks:[],
 			username:"temp",
-			dropdown:"Select An Item",
+			dropdown:"number",
             searchbar:""
 		}
 
@@ -73,12 +73,12 @@ class Block extends Component {
 	                                id={"type"}
 	                                bsStyle="default"
 	                                onChange={this.handleDropDownChange}>
-	                            <MenuItem classname="dropDown" eventKey="number" onSelect={this.handleDropDownChange}>number</MenuItem>
-	                            <MenuItem classname="dropDown" eventKey="hash" onSelect={this.handleDropDownChange}>hash</MenuItem>
-	                            <MenuItem classname="dropDown" eventKey="parentHash" onSelect={this.handleDropDownChange}>parentHash</MenuItem>
-	                            <MenuItem classname="dropDown" eventKey="witnessAddress" onSelect={this.handleDropDownChange}>witnessAddress</MenuItem>
-	                            <MenuItem classname="dropDown" eventKey="transactionsCount" onSelect={this.handleDropDownChange}>Total Missed</MenuItem>
-	                            <MenuItem classname="dropDown" eventKey="transactionsTotal" onSelect={this.handleDropDownChange}>Latest Block Number</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="number" onSelect={this.handleDropDownChange}>Number</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="hash" onSelect={this.handleDropDownChange}>Hash</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="parentHash" onSelect={this.handleDropDownChange}>Parent Hash</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="witnessAddress" onSelect={this.handleDropDownChange}>Witness Address</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="transactionsCount" onSelect={this.handleDropDownChange}>Transactions Count</MenuItem>
+	                            <MenuItem classname="dropDown" eventKey="transactionsTotal" onSelect={this.handleDropDownChange}>Total Transactions</MenuItem>
 
 	                            {/*<MenuItem divider />
 	                            <MenuItem eventKey="4">Separated link</MenuItem>*/}
@@ -122,15 +122,15 @@ class Block extends Component {
 class BlockTable extends React.Component {
     render(){
         return(
-            <table id="blockTable padding">
+            <table id="blockTable" className="tableWidth">
                 <tbody>
                     <tr>
-                        <th className="tableTitle textAlignCenter">number</th>
-                        <th className="tableTitle textAlignCenter">hash</th>
-                        <th className="tableTitle textAlignCenter">parentHash</th>
-                        <th className="tableTitle textAlignCenter">witnessAddress</th>
-                        <th className="tableTitle textAlignCenter">transactionsCount</th>
-                        <th className="tableTitle textAlignCenter">transactionsTotal</th>
+                        <th className="tableTitle textAlignCenter">Number</th>
+                        <th className="tableTitle textAlignCenter">Hash</th>
+                        <th className="tableTitle textAlignCenter">Parent Hash</th>
+                        <th className="tableTitle textAlignCenter">Witness Address</th>
+                        <th className="tableTitle textAlignCenter">Transactions Count</th>
+                        <th className="tableTitle textAlignCenter">Total Transactions</th>
                     </tr>
                     {
                         this.props.blocks.map((blocks, index) => {
