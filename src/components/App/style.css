@@ -4,8 +4,8 @@ background-color: #ffcc99; */
 
 .backGround{
   background:
-    url("./tronWallPaperCatTron.gif")
-    /* url("TronExWallPaper.jpg") */
+    /* url("./tronWallPaperCatTron.gif") */
+    url("TronExWallPaper.jpg")
     no-repeat
     center center
     fixed;
@@ -44,6 +44,28 @@ background-color: #ffcc99; */
     list-style-type: none;
     overflow: hidden;
     background-color: #111;
+}
+
+.appSpacerPadding {
+    /* line-height: 100px; */
+    margin-top: 20em;
+    text-indent: 100%;
+    /* position: absolute;
+  bottom: 0;
+  left: 0; */
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.appSpacer2Padding {
+    /* line-height: 100px; */
+    margin-top: 25em;
+    text-indent: 100%;
+    /* position: absolute;
+  bottom: 0;
+  left: 0; */
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .liHeaderTextPadding {
@@ -140,6 +162,26 @@ background-color: #ffcc99; */
     color: white;
     text-align: center;
     padding: 0.5em 5em;
+    text-decoration: none;
+}
+
+.coinDataUl {
+    opacity: 0.85;
+    /* margin-top: -10px; */
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #111;
+    border-top:1em solid #111;
+    border-bottom:1em solid #111;
+
+    border-radius: 10px 10px 10px 10px;
+}
+
+.coinDataLi {
+    display:inline-block;
+    color: white;
+    text-align: center;
+    padding: 0.5em 4em;
     text-decoration: none;
 }
 
