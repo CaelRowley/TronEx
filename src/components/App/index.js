@@ -43,8 +43,6 @@ class App extends Component {
         this.clickBlockExplorer= this.clickBlockExplorer.bind(this);
         this.findLiVisualisationState= this.findLiVisualisationState.bind(this);
         this.findLiBlockExplorerState= this.findLiBlockExplorerState.bind(this);
-        this.formatCurrency= this.formatCurrency.bind(this);
-
     }
 
     getCryptoData(cryptoName) {
@@ -91,12 +89,6 @@ class App extends Component {
         else
             return 'appLi'
     };
-
-    formatCurrency = function(amount) {
-        var re = '\\d(?=(\\d{' + (2 || 3) + '})+' + (3 > 0 ? '\\.' : '$') + ')';
-        return amount.toFixed(Math.max(0, ~~2)).replace(new RegExp(re, 'g'), '$&,');
-    };
-
 
   render() {
     return (
