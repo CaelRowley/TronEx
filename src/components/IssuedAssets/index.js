@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './style.css';
+import '../css/style.css';
+
 import $ from 'jquery'
 
 import {DropdownButton, MenuItem, Row, Col} from 'react-bootstrap';
@@ -42,14 +44,14 @@ class IssuedAssets extends Component {
     }
 
     render() {
-    	
+
         return (
             <div className="IssuedAssets">
-                
+
                 {/*<iframe src="http://localhost:5601/app/kibana#/dashboard/aeb3b600-5165-11e8-9f68-8d3552208aeb?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3A'2018-05-06T17%3A39%3A19.280Z'%2Cmode%3Aabsolute%2Cto%3A'2018-05-06T17%3A54%3A19.282Z'))" height="1500" width="1700"></iframe>*/}
-                <Row className="padding boarder-bottom-tron">
+                <Row className="padding boarder-bottom-tron componentTableHeader">
                     <Col xs={12} md={8} >
-                        <div className="leftAlign">
+                        <div className="leftAlign dropDown">
                             <DropdownButton
                                     title={this.state.dropdown}
                                     key={"asd"}
@@ -62,7 +64,7 @@ class IssuedAssets extends Component {
                                 <MenuItem eventKey="startTime" onSelect={this.handleDropDownChange}>startTime</MenuItem>
                                 <MenuItem eventKey="endTime" onSelect={this.handleDropDownChange}>endTime</MenuItem>
                                 <MenuItem eventKey="url" onSelect={this.handleDropDownChange}>url</MenuItem>
-                                
+
                                 {/*<MenuItem divider />
                                 <MenuItem eventKey="4">Separated link</MenuItem>*/}
                             </DropdownButton>
@@ -81,7 +83,7 @@ class IssuedAssets extends Component {
                     <Col xs={6} md={4}>
 
 
-                        <div className="btn">Results: {this.state.issuedassets.length}</div>
+                        <div className="btn resultsText">Results: {this.state.issuedassets.length}</div>
 
                         <input
                             type="submit"

@@ -57,7 +57,7 @@ class Witness extends Component {
     render() {
         return (
             <div className="Witness">
-                <Row className="padding boarder-bottom-tron">
+                <Row className="padding boarder-bottom-tron componentTableHeader">
                         <Col xs={12} md={8} >
                             <div className="leftAlign">
                                 <DropdownButton
@@ -91,7 +91,7 @@ class Witness extends Component {
                         <Col xs={6} md={4}>
 
 
-                            <div className="btn witnessResults">Results: {this.state.witnesses.length}</div>
+                            <div className="btn resultsText">Results: {this.state.witnesses.length}</div>
 
                             <input
                                 type="submit"

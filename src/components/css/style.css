@@ -63,9 +63,6 @@
 }
 
 .boarder-bottom-tron {
-  border-color: #f44336 !important;
-  border-bottom: 1px solid;
-  padding-bottom: 1.3em;
 }
 
 .width100 {
@@ -119,10 +116,31 @@
     transition: color 0.3s ease-out;
 }
 
+.dropDown {
+	color: blue;
+	position: relative;
+	z-index: 1000;
+	overflow: visible;
+}
+
 .tableUrl:hover {
     cursor: pointer;
 	color: #D61719;
     /* color: tomato; */
+}
+
+.resultsText{
+    color:white;
+}
+
+.componentTableHeader{
+    background-color: #333;
+    border-top:1em solid #333;
+    border-bottom:1em solid #333;
+    margin-top: -0.75em;
+    margin-left: 0em;
+    margin-right: 0em;
+    opacity:0.90;
 }
 
 td, th {
@@ -138,19 +156,19 @@ tr:nth-child(odd) {
     background-color: #FFF;
 	/* background-color: #FFFACD; */
 	/* background-color: #287BBF; */
-	opacity: 0.95;
+	opacity: 0.97;
 }
 
 tr:nth-child(even) {
-    background-color: #DDD;
+    background-color: #EEE;
 	/* background-color: #ffcc99; */
 	/* background-color: #F8CBFF; */
-	opacity: 0.95;
+	opacity: 0.97;
 
 }
 
 tr:hover {
     /* background-color: #DDD; */
-	/* filter: brightness(85%); */
+	/* filter: brightness(95%); */
 	opacity: 0.85;
 }

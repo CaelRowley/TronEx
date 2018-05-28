@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import '../css/style.css';
 
 import {DropdownButton, MenuItem, Row, Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
@@ -57,8 +58,8 @@ class Nodes extends Component {
 
     render() {
         return (
-            <div className="Nodes">
-                <Row className="padding boarder-bottom-tron">
+            <div className="Nodes dropDown">
+                <Row className="padding boarder-bottom-tron componentTableHeader">
                         <Col xs={12} md={8} >
                             <div className="leftAlign">
                                 <DropdownButton
@@ -90,7 +91,7 @@ class Nodes extends Component {
                         <Col xs={6} md={4}>
 
 
-                            <div className="btn">Results: {this.state.nodes.length}</div>
+                            <div className="btn resultsText">Results: {this.state.nodes.length}</div>
 
                             <input
                                 type="submit"

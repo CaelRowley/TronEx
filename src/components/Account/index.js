@@ -44,9 +44,9 @@ class Account extends Component {
     render() {
         return (
             <div className="Account">
-                    <Row className="padding boarder-bottom-tron">
+                    <Row className="padding boarder-bottom-tron componentTableHeader">
                             <Col xs={12} md={8} >
-                                <div className="leftAlign">
+                                <div className="leftAlign dropDown">
                                     <DropdownButton
                                             title={this.state.dropdown}
                                             key={"asd"}
@@ -78,7 +78,7 @@ class Account extends Component {
                             <Col xs={6} md={4}>
 
 
-                                <div className="btn btn-light rightAlign accountRightAlignPadding">Results: {this.state.accounts.length}</div>
+                                <div className="btn btn-light rightAlign accountRightAlignPadding resultsText">Results: {this.state.accounts.length}</div>
 
                                 <input
                                     type="submit"
