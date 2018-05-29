@@ -3,8 +3,9 @@ import './style.css';
 import '../css/style.css';
 import tronExTitle from './TronExTitle.png';
 import tronExWallPaper from './TronExWallPaper.jpg';
+import tronMotto from './tronMotto.png';
 
-
+import Service from './../utils/service.js';
 import Visualisation from './../Visualisation';
 import BlockExplorer from './../BlockExplorer';
 
@@ -38,12 +39,39 @@ class App extends Component {
                 "rank": "",
                 "percent_change_1h": ""
             },
+            blocks:0,
+            accounts:0,
+            witnesses:0,
+            issuedassets:0,
+            nodes:0,
         };
+
+        this.countEntity("blocks");
+        this.countEntity("accounts");
+        this.countEntity("witnesses");
+        this.countEntity("issuedassets");
+        this.countEntity("nodes");
 
         this.clickVisualisation= this.clickVisualisation.bind(this);
         this.clickBlockExplorer= this.clickBlockExplorer.bind(this);
         this.findLiVisualisationState= this.findLiVisualisationState.bind(this);
         this.findLiBlockExplorerState= this.findLiBlockExplorerState.bind(this);
+    }
+
+    countEntity(entity){
+        var that = this;
+        var service = new Service();
+        var dataPromise = service.countEntity(entity);
+        dataPromise.done(function(dataFromPromise) {
+            that._displayResponse(entity, dataFromPromise);
+        });
+    }
+
+    _displayResponse(entity, response){
+
+        this.setState({
+            [entity]:response.count
+        });
     }
 
     getCryptoData(cryptoName) {
@@ -120,11 +148,14 @@ class App extends Component {
                       <li className="appSpacerPadding">_</li>
 
                       <ul className="coinDataUl">
-                          <li className="coinDataLi">Market Cap<br/><CurrencyFormat value={this.state.crypto.market_cap_usd} displayType={'text'} thousandSeparator={true} prefix={'$'} /></li>
-                          <li className="coinDataLi">Price per TRX<br/><CurrencyFormat value={this.state.crypto.price_usd} displayType={'text'} thousandSeparator={true} prefix={'$'} /></li>
-                          <li className="coinDataLi">24 hour volume<br/><CurrencyFormat value={this.state.crypto["24h_volume_usd"]} displayType={'text'} thousandSeparator={true} prefix={'$'} /></li>
-                          <li className="coinDataLi">RANK<br/>{this.state.crypto.rank}</li>
-                          <li className="coinDataLi">1h change<br/>{this.state.crypto.percent_change_1h}</li>
+                          <li className="coinDataLi"><img src={tronMotto} alt="Decentralize the Internet" className="centerAlign appSizeMottoImage"/><br/></li>
+                      </ul>
+                      <ul className="coinDataUl">
+                          <li className="coinDataLi">Blocks<br/>{this.state.blocks}<br/><br/><br/>Market Cap<br/><CurrencyFormat value={this.state.crypto.market_cap_usd} displayType={'text'} thousandSeparator={true} prefix={'$'} /></li>
+                          <li className="coinDataLi">Accounts<br/>{this.state.accounts}<br/><br/><br/>Price per TRX<br/><CurrencyFormat value={this.state.crypto.price_usd} displayType={'text'} thousandSeparator={true} prefix={'$'} /></li>
+                          <li className="coinDataLi">Representatives<br/>{this.state.witnesses}<br/><br/><br/>24 hour volume<br/><CurrencyFormat value={this.state.crypto["24h_volume_usd"]} displayType={'text'} thousandSeparator={true} prefix={'$'} /></li>
+                          <li className="coinDataLi">Tokens<br/>{this.state.issuedassets}<br/><br/><br/>RANK<br/>{this.state.crypto.rank}</li>
+                          <li className="coinDataLi">Nodes<br/>{this.state.nodes}<br/><br/><br/>1h change<br/>{this.state.crypto.percent_change_1h}</li>
                       </ul>
                       <li className="appSpacer2Padding">_</li>
 
