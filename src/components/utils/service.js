@@ -52,6 +52,28 @@ class Service {
         return dfd;
     }
 
+    countEntity(type){
+        var dfd = $.Deferred();
+
+        var elasticsearchQuery = 'http://www.tronex.co.uk:9200/'+type+'/_count';
+
+        $.ajax({
+            url: elasticsearchQuery,
+            headers: {
+                'Content-Type':'application/json;charset=UTF-8',
+            },
+            method: 'GET',
+            dataType: 'json',
+            success: function(response){
+                dfd.resolve(response);
+            }/*,
+            error: function(response){
+                console.log("error");
+            }*/
+        });
+        return dfd;
+    }
+
     getWitnessByAddress(address){
         return this.getEntity("witnesses", "witnessAddress", address);
     }
