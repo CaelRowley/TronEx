@@ -11,7 +11,8 @@ import BlockExplorer from './../BlockExplorer';
 import CurrencyFormat from 'react-currency-format';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
-let CoinMarketCap = require("node-coinmarketcap");
+import CoinMarketCap from './../../node-coinmarketcap';
+
 var coinmarketcap = new CoinMarketCap();
 
 class App extends Component {
