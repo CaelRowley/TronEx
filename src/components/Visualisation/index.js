@@ -6,13 +6,14 @@ import Service from './../utils/service.js';
 import graphTemp from './tempGraph.gif';
 import graphBlocks from './GraphBlocks.png';
 import graphWitnesses from './GraphWitnesses.png';
+import graphMap from './graphMap.png';
 
 import { Redirect } from 'react-router';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 import GraphBlocks from './../../containers/GraphBlocks';
 import GraphWitnesses from './../../containers/GraphWitnesses';
-
+import GraphNodes from './../../containers/GraphNodes';
 
 
 class Visualisation extends Component {
@@ -55,7 +56,7 @@ class Visualisation extends Component {
             return <Redirect to="/visualisation/GraphWitnesses"/>
         } else if (this.state.toGraphNum === 3) {
             // this.setState({ toGraphNum: 0});
-            return <Redirect to="/visualisation/3"/>
+            return <Redirect to="/visualisation/GraphNodes"/>
         } else if (this.state.toGraphNum === 4) {
             // this.setState({ toGraphNum: 0});
             return <Redirect to="/visualisation/4"/>
@@ -72,7 +73,7 @@ class Visualisation extends Component {
 {/*<iframe src="http://localhost:5601/app/kibana#/dashboard/848aeb00-516a-11e8-9f68-8d3552208aeb?embed=true&_g=(refreshInterval%3A(display%3AOff%2Cpause%3A!f%2Cvalue%3A0)%2Ctime%3A(from%3A'2018-05-06T18%3A54%3A19.295Z'%2Cmode%3Aabsolute%2Cto%3A'2018-05-06T19%3A09%3A19.297Z'))" height="1500" width="1700"></iframe>*/}
             <Route exact path="/visualisation/GraphBlocks" component={GraphBlocks}/>
             <Route exact path="/visualisation/GraphWitnesses" component={GraphWitnesses}/>
-            <Route exact path="/visualisation/3" component={GraphBlocks}/>
+            <Route exact path="/visualisation/GraphNodes" component={GraphNodes}/>
             <Route exact path="/visualisation/4" component={GraphBlocks}/>
 
                 <div>
@@ -83,7 +84,7 @@ class Visualisation extends Component {
                                 <td className="visualisationGraphTd" onClick={this.toggle2}><img src={graphWitnesses} alt="Witnesses Dashboard" className="centerAlign visSizeImage"/><br/>Witnesses Dashboard</td>
                             </tr>
                             <tr className="visualisationGraphTr">
-                                <td className="visualisationGraphTd"><br/>TBD</td>
+                                <td className="visualisationGraphTd" onClick={this.toggle3}><img src={graphMap} alt="Nodes Dashboard" className="centerAlign visSizeImage"/><br/>Nodes Dashboard</td>
                                 <td className="visualisationGraphTd"><br/>TBD</td>
                             </tr>
                         </tbody>

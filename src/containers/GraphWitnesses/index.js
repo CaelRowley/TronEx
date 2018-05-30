@@ -17,7 +17,7 @@ class GraphWitnesses extends Component {
         console.log("here")
         return(
 
-                <iframe className="witnessContainer" src="http://www.tronex.co.uk:5601/app/kibana#/dashboard/3d739330-628f-11e8-a207-e7366f538d0d?embed=true&_g=()" height="600" width="800"></iframe>
+            <iframe className="witnessContainer" src="http://www.tronex.co.uk:5601/goto/4d769d43c932dbdf340f8ac8448713b0?embed=true" height="600" width="800"></iframe>
 
         )
     }
