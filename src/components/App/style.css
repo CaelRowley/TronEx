@@ -2,6 +2,14 @@
 background-color: #ffcc99; */
 /* url(http://i0.kym-cdn.com/photos/images/newsfeed/001/196/474/246.gif) */
 
+.appSizeMottoImage{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+    height:auto;
+}
+
 .backGround{
   background:
     /* url("./tronWallPaperCatTron.gif") */
@@ -48,7 +56,7 @@ background-color: #ffcc99; */
 
 .appSpacerPadding {
     /* line-height: 100px; */
-    margin-top: 20em;
+    margin-top: 7em;
     text-indent: 100%;
     /* position: absolute;
   bottom: 0;
@@ -59,7 +67,7 @@ background-color: #ffcc99; */
 
 .appSpacer2Padding {
     /* line-height: 100px; */
-    margin-top: 25em;
+    margin-top: 100em;
     text-indent: 100%;
     /* position: absolute;
   bottom: 0;
