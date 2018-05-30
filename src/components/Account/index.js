@@ -92,9 +92,43 @@ class Account extends Component {
 
 
                     </Row>
-                    <div className="">
+                    <div>
+    					<ul className="blockTableButtonsUl">
+   						<li className="blockTableButtonLi">
+   							<button	className="blockTableButton"  onClick={this.firstPage}>|&#8592; </button>
+   						</li>
+    						<li className="blockTableButtonLi">
+    							<button	className="blockTableButton"  onClick={this.previousPage}>&#8592;</button>
+    						</li>
+    						<li className="blockTableButtonLi blockPageNumAlign">{this.state.pageNum}/{this.state.numOfPages}</li>
+    						<li className="blockTableButtonLi">
+    							<button	className="blockTableButton" onClick={this.nextPage}>&#8594;</button>
+    						</li>
+   						<li className="blockTableButtonLi">
+   							<button	className="blockTableButton" onClick={this.lastPage}> &#8594;|</button>
+   						</li>
+    					</ul>
+    				</div>
+                    <div className="blockTablePos">
                         <AccountTable accounts={this.state.accounts}/>
                     </div>
+                    <div>
+    					<ul className="blockTableButtonsUl">
+   						<li className="blockTableButtonLi">
+   							<button	className="blockTableButton"  onClick={this.firstPage}>|&#8592; </button>
+   						</li>
+    						<li className="blockTableButtonLi">
+    							<button	className="blockTableButton"  onClick={this.previousPage}>&#8592;</button>
+    						</li>
+    						<li className="blockTableButtonLi blockPageNumAlign">{this.state.pageNum}/{this.state.numOfPages}</li>
+    						<li className="blockTableButtonLi">
+    							<button	className="blockTableButton" onClick={this.nextPage}>&#8594;</button>
+    						</li>
+   						<li className="blockTableButtonLi">
+   							<button	className="blockTableButton" onClick={this.lastPage}> &#8594;|</button>
+   						</li>
+    					</ul>
+    				</div>
                 </div>
             );
     }

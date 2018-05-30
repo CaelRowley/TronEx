@@ -17,10 +17,22 @@ class IssuedAssets extends Component {
         this.state = {
             issuedassets:[],
             dropdown:"Select An Item",
-            searchbar:""
+            searchbar:"",
+			pageTop:Number.MAX_SAFE_INTEGER,
+			pageBot:0,
+			pageSize:30,
+			pageNum: 1,
+			numOfPages: 1
         }
 
-        this.getIssuedAssets("issuedassets","","");
+        this.getFirstPage("issuedassets", "startTime");
+        this.getNumOfPages();
+        this.previousPage = this.previousPage.bind(this);
+        this.nextPage = this.nextPage.bind(this);
+        this.firstPage = this.firstPage.bind(this);
+        this.lastPage = this.lastPage.bind(this);
+
+        // this.getIssuedAssets("issuedassets","","");
 
         this.handleDropDownChange = this.handleDropDownChange.bind(this);
         this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
@@ -43,6 +55,85 @@ class IssuedAssets extends Component {
         this.getIssuedAssets("issuedassets", this.state.searchbar, this.state.dropdown);
     }
 
+    getFirstPage(entity, filter){
+        var that = this;
+        this.setState({
+            pageNum: 1
+        });
+        var service = new Service();
+        var dataPromise = service.getLatestEntity(entity, filter, this.state.pageSize);
+        dataPromise.done(function(dataFromPromise) {
+            that._displayResponse(dataFromPromise.hits.hits);
+        });
+    }
+
+    getNumOfPages() {
+        var that = this;
+
+        var service = new Service();
+        var dataPromise = service.countEntity("issuedassets");
+        dataPromise.done(function(dataFromPromise) {
+            that.setState({
+                numOfPages: parseInt((dataFromPromise.count/that.state.pageSize) + 1)
+            });
+        });
+    }
+
+    firstPage() {
+        var that = this;
+        this.setState({
+            pageNum: 1
+        });
+        var service = new Service();
+        var dataPromise = service.getLatestEntity("issuedassets", "startTime", this.state.pageSize);
+        dataPromise.done(function(dataFromPromise) {
+            that._displayResponse(dataFromPromise.hits.hits);
+        });
+    }
+
+    lastPage() {
+        var that = this;
+
+        that.setState({
+            pageNum: this.state.numOfPages
+        });
+
+        var service = new Service();
+        var dataPromise = service.countEntity("issuedassets");
+        var dataPromise = service.getLastEntity("issuedassets", "startTime", this.state.pageSize);
+        dataPromise.done(function(dataFromPromise) {
+            that._displayResponse(dataFromPromise.hits.hits.reverse());
+        });
+    }
+
+    previousPage(){
+        var that = this;
+        if(this.state.pageNum > 1){
+            this.setState({
+                pageNum: this.state.pageNum-1
+            });
+            var service = new Service();
+            var dataPromise = service.getAscList("issuedassets", "startTime", that.state.pageTop);
+            dataPromise.done(function(dataFromPromise) {
+                that._displayResponse(dataFromPromise.hits.hits.reverse());
+            });
+        }
+    }
+
+    nextPage(){
+        var that = this;
+        if(this.state.pageNum < this.state.numOfPages){
+            this.setState({
+                pageNum: this.state.pageNum+1
+            });
+            var service = new Service();
+            var dataPromise = service.getDescList("issuedassets", "startTime", that.state.pageBot);
+            dataPromise.done(function(dataFromPromise) {
+                that._displayResponse(dataFromPromise.hits.hits);
+            });
+        }
+    }
+
     render() {
 
         return (
@@ -59,7 +150,7 @@ class IssuedAssets extends Component {
                                     bsStyle="default"
                                     onChange={this.handleDropDownChange}>
                                 <MenuItem eventKey="name" onSelect={this.handleDropDownChange}>Name</MenuItem>
-                                <MenuItem eventKey="ownerAddress" onSelect={this.handleDropDownChange}>Owner Address</MenuItem>
+                                <MenuItem eventKey="startTime" onSelect={this.handleDropDownChange}>Owner Address</MenuItem>
                                 <MenuItem eventKey="totalSupply" onSelect={this.handleDropDownChange}>Total Supply</MenuItem>
                                 <MenuItem eventKey="startTime" onSelect={this.handleDropDownChange}>Start Time</MenuItem>
                                 <MenuItem eventKey="endTime" onSelect={this.handleDropDownChange}>End Time</MenuItem>
@@ -96,9 +187,43 @@ class IssuedAssets extends Component {
 
 
                  </Row>
-                <div className="">
+                 <div>
+ 					<ul className="blockTableButtonsUl">
+ 						<li className="blockTableButtonLi">
+ 							<button	className="blockTableButton"  onClick={this.firstPage}>|&#8592; </button>
+ 						</li>
+ 						<li className="blockTableButtonLi">
+ 							<button	className="blockTableButton"  onClick={this.previousPage}>&#8592;</button>
+ 						</li>
+ 						<li className="blockTableButtonLi blockPageNumAlign">{this.state.pageNum}/{this.state.numOfPages}</li>
+ 						<li className="blockTableButtonLi">
+ 							<button	className="blockTableButton" onClick={this.nextPage}>&#8594;</button>
+ 						</li>
+ 						<li className="blockTableButtonLi">
+ 							<button	className="blockTableButton" onClick={this.lastPage}> &#8594;|</button>
+ 						</li>
+ 					</ul>
+ 				</div>
+                <div className="blockTablePos">
                     <IssuedAssetsTable issuedassets={this.state.issuedassets}/>
                 </div>
+                <div>
+					<ul className="blockTableButtonsUl">
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton"  onClick={this.firstPage}>|&#8592; </button>
+						</li>
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton"  onClick={this.previousPage}>&#8592;</button>
+						</li>
+						<li className="blockTableButtonLi blockPageNumAlign">{this.state.pageNum}/{this.state.numOfPages}</li>
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton" onClick={this.nextPage}>&#8594;</button>
+						</li>
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton" onClick={this.lastPage}> &#8594;|</button>
+						</li>
+					</ul>
+				</div>
             </div>
         );
     }
@@ -109,13 +234,24 @@ class IssuedAssets extends Component {
         var service = new Service();
         var dataPromise = service.getEntity("issuedassets", "", "");
         dataPromise.done(function(dataFromPromise) {
-            that._displayResponse(dataFromPromise);
+            that._displaySearch(dataFromPromise);
         });
     }
 
     _displayResponse(response){
+		this.setState({
+			pageTop: response[0]._source.startTime
+		});
+		this.setState({
+			pageBot: response[response.length-1]._source.startTime
+		});
+    	this.setState({
+            issuedassets:response
+        });
+    }
 
-        this.setState({
+	_displaySearch(response){
+    	this.setState({
             issuedassets:response.hits.hits
         });
     }

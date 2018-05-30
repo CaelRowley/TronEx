@@ -23,7 +23,7 @@ class Block extends Component {
 			numOfPages: 1
 		}
 		// Number.MAX_SAFE_INTEGER
-		this.getFirstPage("blocks", "number", 30);
+		this.getFirstPage("blocks", "number");
 		this.getNumOfPages();
 		this.previousPage = this.previousPage.bind(this);
 		this.nextPage = this.nextPage.bind(this);
@@ -53,13 +53,23 @@ class Block extends Component {
         this.getBlocks("blocks", this.state.searchbar, this.state.dropdown);
     }
 
-	getFirstPage(entity, filter, pageSize){
+	getBlocks(type, filter, field){
+		var that = this;
+
+		var service = new Service();
+		var dataPromise = service.getEntity(type, filter, field);
+		dataPromise.done(function(dataFromPromise) {
+			that._displaySearch(dataFromPromise);
+		});
+	}
+
+	getFirstPage(entity, filter){
 		var that = this;
 		this.setState({
 			pageNum: 1
 		});
 		var service = new Service();
-		var dataPromise = service.getLatestEntity(entity, filter, pageSize);
+		var dataPromise = service.getLatestEntity(entity, filter, this.state.pageSize);
 		dataPromise.done(function(dataFromPromise) {
 			that._displayResponse(dataFromPromise.hits.hits);
 		});
@@ -72,7 +82,7 @@ class Block extends Component {
 		var dataPromise = service.countEntity("blocks");
 		dataPromise.done(function(dataFromPromise) {
 			that.setState({
-				numOfPages: parseInt(dataFromPromise.count/30)
+				numOfPages: parseInt((dataFromPromise.count/that.state.pageSize) + 1)
 			});
 		});
 	}
@@ -95,7 +105,7 @@ class Block extends Component {
 			pageNum: 1
 		});
 		var service = new Service();
-		var dataPromise = service.getLatestEntity("blocks", "number", 30);
+		var dataPromise = service.getLatestEntity("blocks", "number", this.state.pageSize);
 		dataPromise.done(function(dataFromPromise) {
 			that._displayResponse(dataFromPromise.hits.hits);
 		});
@@ -110,7 +120,7 @@ class Block extends Component {
 
 		var service = new Service();
 		var dataPromise = service.countEntity("blocks");
-		var dataPromise = service.getLastEntity("blocks", "number", 30);
+		var dataPromise = service.getLastEntity("blocks", "number", this.state.pageSize);
 		dataPromise.done(function(dataFromPromise) {
 			that._displayResponse(dataFromPromise.hits.hits.reverse());
 		});

@@ -14,10 +14,22 @@ class Witness extends Component {
         this.state = {
             witnesses:[],
             dropdown:"Select An Item",
-            searchbar:""
+            searchbar:"",
+			pageTop:Number.MAX_SAFE_INTEGER,
+			pageBot:0,
+			pageSize:30,
+			pageNum: 1,
+			numOfPages: 1
         }
 
-        this.getWitnesses("witnesses","","");
+        this.getFirstPage("witnesses", "voteCount");
+        this.getNumOfPages();
+        this.previousPage = this.previousPage.bind(this);
+        this.nextPage = this.nextPage.bind(this);
+        this.firstPage = this.firstPage.bind(this);
+        this.lastPage = this.lastPage.bind(this);
+
+        // this.getWitnesses("witnesses","","");
 
         this.handleDropDownChange = this.handleDropDownChange.bind(this);
         this.handleSearchBarChange = this.handleSearchBarChange.bind(this);
@@ -52,6 +64,85 @@ class Witness extends Component {
 
     handleSearchEvent(event){
         this.getWitnesses("witnesses", this.state.searchbar, this.state.dropdown);
+    }
+
+    getFirstPage(entity, filter){
+        var that = this;
+        this.setState({
+            pageNum: 1
+        });
+        var service = new Service();
+        var dataPromise = service.getLatestEntity(entity, filter, this.state.pageSize);
+        dataPromise.done(function(dataFromPromise) {
+            that._displayResponse(dataFromPromise.hits.hits);
+        });
+    }
+
+    getNumOfPages() {
+        var that = this;
+
+        var service = new Service();
+        var dataPromise = service.countEntity("witnesses");
+        dataPromise.done(function(dataFromPromise) {
+            that.setState({
+                numOfPages: parseInt((dataFromPromise.count/that.state.pageSize) + 1)
+            });
+        });
+    }
+
+    firstPage() {
+        var that = this;
+        this.setState({
+            pageNum: 1
+        });
+        var service = new Service();
+        var dataPromise = service.getLatestEntity("witnesses", "voteCount", this.state.pageSize);
+        dataPromise.done(function(dataFromPromise) {
+            that._displayResponse(dataFromPromise.hits.hits);
+        });
+    }
+
+    lastPage() {
+        var that = this;
+
+        that.setState({
+            pageNum: this.state.numOfPages
+        });
+
+        var service = new Service();
+        var dataPromise = service.countEntity("witnesses");
+        var dataPromise = service.getLastEntity("witnesses", "voteCount", this.state.pageSize);
+        dataPromise.done(function(dataFromPromise) {
+            that._displayResponse(dataFromPromise.hits.hits.reverse());
+        });
+    }
+
+    previousPage(){
+        var that = this;
+        if(this.state.pageNum > 1){
+            this.setState({
+                pageNum: this.state.pageNum-1
+            });
+            var service = new Service();
+            var dataPromise = service.getAscList("witnesses", "voteCount", that.state.pageTop);
+            dataPromise.done(function(dataFromPromise) {
+                that._displayResponse(dataFromPromise.hits.hits.reverse());
+            });
+        }
+    }
+
+    nextPage(){
+        var that = this;
+        if(this.state.pageNum < this.state.numOfPages){
+            this.setState({
+                pageNum: this.state.pageNum+1
+            });
+            var service = new Service();
+            var dataPromise = service.getDescList("witnesses", "voteCount", that.state.pageBot);
+            dataPromise.done(function(dataFromPromise) {
+                that._displayResponse(dataFromPromise.hits.hits);
+            });
+        }
     }
 
     render() {
@@ -104,9 +195,43 @@ class Witness extends Component {
 
 
                 </Row>
-                <div className="">
+                <div>
+					<ul className="blockTableButtonsUl">
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton"  onClick={this.firstPage}>|&#8592; </button>
+						</li>
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton"  onClick={this.previousPage}>&#8592;</button>
+						</li>
+						<li className="blockTableButtonLi blockPageNumAlign">{this.state.pageNum}/{this.state.numOfPages}</li>
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton" onClick={this.nextPage}>&#8594;</button>
+						</li>
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton" onClick={this.lastPage}> &#8594;|</button>
+						</li>
+					</ul>
+				</div>
+                <div className="blockTablePos">
                     <WitnessTable witnesses={this.state.witnesses}/>
                 </div>
+                <div>
+					<ul className="blockTableButtonsUl">
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton"  onClick={this.firstPage}>|&#8592; </button>
+						</li>
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton"  onClick={this.previousPage}>&#8592;</button>
+						</li>
+						<li className="blockTableButtonLi blockPageNumAlign">{this.state.pageNum}/{this.state.numOfPages}</li>
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton" onClick={this.nextPage}>&#8594;</button>
+						</li>
+						<li className="blockTableButtonLi">
+							<button	className="blockTableButton" onClick={this.lastPage}> &#8594;|</button>
+						</li>
+					</ul>
+				</div>
             </div>
 
         );
@@ -118,17 +243,26 @@ class Witness extends Component {
         var service = new Service();
         var dataPromise = service.getEntity(type, filter, field);
         dataPromise.done(function(dataFromPromise) {
-            that._displayResponse(dataFromPromise);
+            that._displaySearch(dataFromPromise);
         });
     }
 
     _displayResponse(response){
-        this.setState({
+		this.setState({
+			pageTop: response[0]._source.voteCount
+		});
+		this.setState({
+			pageBot: response[response.length-1]._source.voteCount
+		});
+    	this.setState({
+            witnesses:response
+        });
+    }
+
+	_displaySearch(response){
+    	this.setState({
             witnesses:response.hits.hits
         });
-
-        /*output += "<td>pubKey: " + witness._source.pubkey + '</td>';*/
-        /*output += "<td>isJobs: " + witness._source.isjobs + '</td>';*/
     }
 }
 
