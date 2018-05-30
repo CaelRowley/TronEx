@@ -29,7 +29,7 @@ class Service {
             ]
         }
 
-        if(filter.length > 0 && field.length>0){
+        if(field.length>0){
             var filterAndField = { 'multi_match' : {'query' : filter, 'fields' : [ field ]}}
             query.bool.must.push(filterAndField);
         }

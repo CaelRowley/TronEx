@@ -272,14 +272,16 @@ class IssuedAssetsTable extends React.Component {
                     </tr>
                     {
                         this.props.issuedassets.map((issuedassets, index) => {
+                            var startTime = new Date(issuedassets._source.startTime).toDateString();
+                            var endTime = new Date(issuedassets._source.endTime).toDateString();
                             var output =
                             <tr key={issuedassets._source.number}>
                                 <td className="tableRowHeight">{index +1}</td>
-                                <td><Link className="tableLink" to={`/blockchainexplorer/issuedassets/${issuedassets._source.startTime}`}>{issuedassets._source.startTime}</Link></td>
-                                <td>{issuedassets._source.name}</td>
+                                <td>{issuedassets._source.ownerAddress}</td>
+                                <td><Link className="tableLink" to={`/blockchainexplorer/issuedassets/${issuedassets._source.name}`}>{issuedassets._source.name}</Link></td>
                                 <td>{issuedassets._source.totalSupply}</td>
-                                <td>{issuedassets._source.startTime}</td>
-                                <td>{issuedassets._source.endTime}</td>
+                                <td>{startTime}</td>
+                                <td>{endTime}</td>
                                 <td>{issuedassets._source.url}</td>
                             </tr>
                             return output;
