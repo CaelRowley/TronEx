@@ -37,7 +37,6 @@ class Info extends Component {
     render(){
         return(
             <div>
-
                 <ul className="infoAppUlHeader">
                     <li className="infoLiHeaderTextPadding">_FHFHFGSDRGAD</li>
                 </ul>
