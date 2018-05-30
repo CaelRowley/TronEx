@@ -282,7 +282,7 @@ class IssuedAssetsTable extends React.Component {
                                 <td>{issuedassets._source.totalSupply}</td>
                                 <td>{startTime}</td>
                                 <td>{endTime}</td>
-                                <td>{issuedassets._source.url}</td>
+                                <td><Link target="_blank" className="tableUrl" to={issuedassets._source.url}>{issuedassets._source.url}</Link></td>
                             </tr>
                             return output;
                         })
