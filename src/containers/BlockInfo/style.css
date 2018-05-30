@@ -1,3 +1,17 @@
 .hiddenSearchButton {
 	overflow: hidden;
 }
+
+.blockInfoBtn{
+	color: white;
+	background-color: #333;
+	size : 2em;
+	margin-right: 1em;
+	margin-left: 1em;
+
+	opacity: 0.9;
+}
+
+.panelOpac{
+	opacity:0.9;
+}

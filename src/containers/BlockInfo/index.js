@@ -69,7 +69,7 @@ class BlockInfo extends Component {
     _setBlockState(blockEntity){
         this.setState({
             block: blockEntity.hits.hits[0]._source
-        }); 
+        });
 
         this.state.blockLeft = false;
         this.state.blockRight = false;
@@ -80,6 +80,8 @@ class BlockInfo extends Component {
     }
 
     render(){
+        var timeCreated = new Date(this.state.block.time).toDateString();
+
         return(
             <div>
              <Row className="padding boarder-bottom-tron componentTableHeader">
@@ -87,8 +89,8 @@ class BlockInfo extends Component {
                         <div>
                             <input
                                 type="submit"
-                                value="<<"
-                                className="btn leftAlign"
+                                value="&#8592;"
+                                className="blockInfoBtn leftAlign"
                                 placeholder=""
                                 onClick={this.handleClickLeft}
                             />
@@ -96,8 +98,8 @@ class BlockInfo extends Component {
                         <div>
                             <input
                                 type="submit"
-                                value=">>"
-                                className="btn rightAlign"
+                                value="&#8594;"
+                                className="blockInfoBtn rightAlign"
                                 placeholder=""
                                 onClick={this.handleClickRight}
                             />
@@ -105,33 +107,33 @@ class BlockInfo extends Component {
                  </Row>
 
                 <div className="">
-                  <Panel className="greyPanelHeader">
+                  <Panel className="greyPanelHeader panelOpac">
                     <Panel.Heading>Block</Panel.Heading>
                     <Panel.Body>
                             <ListGroup>
                                 <Row>
-                                    <ListGroupItem className="textAlignLeft">Number     {this.state.block.number}</ListGroupItem>
-                                </Row> 
-                                <Row>
-                                    <ListGroupItem  className="textAlignLeft">Hash      {this.state.block.hash}</ListGroupItem>
+                                    <ListGroupItem className="textAlignLeft">Number: {this.state.block.number}</ListGroupItem>
                                 </Row>
                                 <Row>
-                                    <ListGroupItem  className="textAlignLeft">Parent Hash      {this.state.block.parentHash}</ListGroupItem>
+                                    <ListGroupItem  className="textAlignLeft">Hash: {this.state.block.hash}</ListGroupItem>
                                 </Row>
                                 <Row>
-                                    <ListGroupItem  className="textAlignLeft">Witness Address      {this.state.block.witnessAddress}</ListGroupItem>
+                                    <ListGroupItem  className="textAlignLeft">Parent Hash: {this.state.block.parentHash}</ListGroupItem>
                                 </Row>
                                 <Row>
-                                    <ListGroupItem  className="textAlignLeft">Transactions Count      {this.state.block.transactionsCount}</ListGroupItem>
+                                    <ListGroupItem  className="textAlignLeft">Witness Address: {this.state.block.witnessAddress}</ListGroupItem>
                                 </Row>
                                 <Row>
-                                    <ListGroupItem  className="textAlignLeft">Transactions Total      {this.state.block.transactionsTotal}</ListGroupItem>
+                                    <ListGroupItem  className="textAlignLeft">Transactions Count: {this.state.block.transactionsCount}</ListGroupItem>
                                 </Row>
                                 <Row>
-                                    <ListGroupItem  className="textAlignLeft">Size      {this.state.block.size}</ListGroupItem>
+                                    <ListGroupItem  className="textAlignLeft">Transactions Total: {this.state.block.transactionsTotal}</ListGroupItem>
                                 </Row>
                                 <Row>
-                                    <ListGroupItem  className="textAlignLeft">Creation Time      {this.state.block.time}</ListGroupItem>
+                                    <ListGroupItem  className="textAlignLeft">Size: {this.state.block.size}</ListGroupItem>
+                                </Row>
+                                <Row>
+                                    <ListGroupItem  className="textAlignLeft">Creation Time: {timeCreated}</ListGroupItem>
                                 </Row>
 
                             </ListGroup>
@@ -164,7 +166,7 @@ class TransactionsPanel extends React.Component {
         this._transformData();
         return(
 
-            <Panel className="greyPanelHeader">
+            <Panel className="greyPanelHeader panelOpac">
                 <Panel.Heading>Transactions</Panel.Heading>
                 <table id="TransactionTable" className="tableWidth">
                     <tbody>
@@ -178,7 +180,7 @@ class TransactionsPanel extends React.Component {
                             this.state.transactions.map((transaction, index) => {
                                 var output =
                                 <tr key={index}>
-                                    <td>{index+1}</td>
+                                    <td className="temp">{index+1}</td>
                                     <td>{transaction.toaddress}</td>
                                     <td>{transaction.fromaddress}</td>
                                     <td>{transaction.amount}</td>

@@ -147,8 +147,8 @@ class BlockExplorer extends Component {
                   <ul className="blockExplorerUl">
                       <li className={this.findLiBlocksState()}><Link onClick={this.toggleBlocksClass} className={this.state.blocksSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/block">Blocks</Link></li>
                       <li className={this.findLiAccountsState()}><Link onClick={this.toggleAccountsClass} className={this.state.accountsSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/account">Accounts</Link></li>
-                      <li className={this.findLiWitnesessState()}><Link onClick={this.toggleWitnessesClass} className={this.state.witnessesSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/witness">Witnesses</Link></li>
-                      <li className={this.findLiAssetsState()}><Link onClick={this.toggleAssetsClass} className={this.state.assetsSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/issuedassets">Assets</Link></li>
+                      <li className={this.findLiWitnesessState()}><Link onClick={this.toggleWitnessesClass} className={this.state.witnessesSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/witness">Representatives</Link></li>
+                      <li className={this.findLiAssetsState()}><Link onClick={this.toggleAssetsClass} className={this.state.assetsSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/issuedassets">Tokens</Link></li>
                       <li className={this.findLiNodesState()}><Link onClick={this.toggleNodesClass} className={this.state.nodesSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/nodes">Nodes</Link></li>
                   </ul>
               </div>
