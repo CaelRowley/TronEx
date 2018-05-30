@@ -1,17 +1,19 @@
 import $ from 'jquery'
 class Service {
 
+
     getEntity(type, filter, field){
+        let pageSize = 30;
         var dfd = $.Deferred();
 
-        var elasticsearchHost = 'http://localhost:9200/_search';
+        var elasticsearchHost = 'http://www.tronex.co.uk:9200/_search';
 
         // var type = "witnesses";
         // var filter = "";
         // var field = "";
 
         var body = {
-           'size': 500
+           'size': pageSize
         };
 
         var query = {
@@ -52,6 +54,172 @@ class Service {
         return dfd;
     }
 
+    getDescList(entity, filter, lte){
+        let pageSize = 30;
+        var dfd = $.Deferred();
+
+        var elasticsearchHost = 'http://www.tronex.co.uk:9200/'+entity+'/_search';
+
+        var sortBody = [
+            { [filter]: {"order" : "desc"}}
+        ];
+
+        // let lte = (pageSize * (pageNum-1)) -1;
+        // let gte = (pageSize * pageNum) -1;
+        var queryBody = {
+            "range" : {
+                [filter] : {
+                    "lte" : lte
+                }
+            }
+        };
+
+        var body = {
+           'size': pageSize
+        };
+
+        body.sort = sortBody;
+        body.query = queryBody;
+
+        $.ajax({
+            url: elasticsearchHost,
+            headers: {
+                'Content-Type':'application/json;charset=UTF-8',
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: JSON.stringify(body),
+            success: function(response){
+                dfd.resolve(response);
+            }/*,
+            error: function(response){
+                console.log("error");
+            }*/
+        });
+        return dfd;
+    }
+
+    getAscList(entity, filter, gte){
+        let pageSize = 30;
+        var dfd = $.Deferred();
+
+        var elasticsearchHost = 'http://www.tronex.co.uk:9200/'+entity+'/_search';
+
+        var sortBody = [
+            { [filter]: {"order" : "asc"}}
+        ];
+
+        // let lte = (pageSize * (pageNum-1)) -1;
+        // let gte = (pageSize * pageNum) -1;
+        var queryBody = {
+            "range" : {
+                [filter] : {
+                    "gte" : gte
+                }
+            }
+        };
+
+        var body = {
+           'size': pageSize
+        };
+
+        body.sort = sortBody;
+        body.query = queryBody;
+
+        $.ajax({
+            url: elasticsearchHost,
+            headers: {
+                'Content-Type':'application/json;charset=UTF-8',
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: JSON.stringify(body),
+            success: function(response){
+                dfd.resolve(response);
+            }/*,
+            error: function(response){
+                console.log("error");
+            }*/
+        });
+        return dfd;
+    }
+
+    getLatestEntity(entity, filter, latestAmount){
+        var dfd = $.Deferred();
+
+        var elasticsearchHost = 'http://www.tronex.co.uk:9200/'+entity+'/_search';
+
+        var sortBody = [
+            { [filter]: {"order" : "desc"}}
+        ];
+
+        var queryBody = {
+            "match_all": {}
+        }
+
+        var body = {
+           'size': latestAmount
+        };
+
+        body.sort = sortBody;
+        body.query = queryBody;
+
+        $.ajax({
+            url: elasticsearchHost,
+            headers: {
+                'Content-Type':'application/json;charset=UTF-8',
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: JSON.stringify(body),
+            success: function(response){
+                dfd.resolve(response);
+            }/*,
+            error: function(response){
+                console.log("error");
+            }*/
+        });
+        return dfd;
+    }
+
+    getLastEntity(entity, filter, latestAmount){
+        var dfd = $.Deferred();
+
+        var elasticsearchHost = 'http://www.tronex.co.uk:9200/'+entity+'/_search';
+
+        var sortBody = [
+            { [filter]: {"order" : "asc"}}
+        ];
+
+        var queryBody = {
+            "match_all": {}
+        }
+
+        var body = {
+           'size': latestAmount
+        };
+
+        body.sort = sortBody;
+        body.query = queryBody;
+
+        $.ajax({
+            url: elasticsearchHost,
+            headers: {
+                'Content-Type':'application/json;charset=UTF-8',
+            },
+            method: 'POST',
+            dataType: 'json',
+            data: JSON.stringify(body),
+            success: function(response){
+                dfd.resolve(response);
+            }/*,
+            error: function(response){
+                console.log("error");
+            }*/
+        });
+        return dfd;
+    }
+
     countEntity(type){
         var dfd = $.Deferred();
 
@@ -73,6 +241,8 @@ class Service {
         });
         return dfd;
     }
+
+
 
     getWitnessByAddress(address){
         return this.getEntity("witnesses", "witnessAddress", address);

@@ -1,0 +1,31 @@
+.blockTableButtonsUl {
+    opacity: 0.90;
+    /* margin-top: -10px; */
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #222;
+    border-radius: 0px 0px 2px 2px;
+}
+
+.blockTableButtonLi {
+    display:inline-block;
+    color: white;
+    text-align: center;
+    padding: 0.5em 0.5em;
+    text-decoration: none;
+}
+
+.blockTableButton {
+    background-color: #222; /* Green */
+    border: none;
+    color: white;
+    padding: 0px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2em;
+}
+
+.blockTablePos{
+    margin-top: -0.7em;
+}
