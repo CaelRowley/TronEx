@@ -288,7 +288,7 @@ class WitnessTable extends React.Component {
                                 <td className="tableRowHeight">{index +1}</td>
                                 <td><Link className="tableLink" to={`/blockchainexplorer/witness/${witness._source.address}`}>{witness._source.address}</Link></td>
                                 <td>{witness._source.voteCount}</td>
-                                <td><Link className="tableUrl" to="{witness._source.url}">{witness._source.url}</Link></td>
+                                <td><Link target="_blank" className="tableUrl" to={witness._source.url}>{witness._source.url}</Link></td>
                                 <td>{witness._source.totalProduced}</td>
                                 <td>{witness._source.totalMissed}</td>
                                 <td>{witness._source.latestBlockNum}</td>
