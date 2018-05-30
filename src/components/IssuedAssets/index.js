@@ -118,8 +118,6 @@ class IssuedAssets extends Component {
         this.setState({
             issuedassets:response.hits.hits
         });
-
-        console.log(this.state.issuedassets);
     }
 }
 class IssuedAssetsTable extends React.Component {

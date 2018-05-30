@@ -53,50 +53,43 @@ class IssuedAssetInfo extends Component {
                  </Col>
             </Row>
 
-                <div className="">
+                
                   <Panel className="greyPanelHeader">
                     <Panel.Heading>Token</Panel.Heading>
                     <Panel.Body>
-                            {/*<ListGroup>
+                         <ListGroup>
                                 <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">Address</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem className="textAlignLeft">{this.state.account.address}</ListGroupItem>
-                                    </Col>
+                                    <ListGroupItem className="textAlignLeft">Name     {this.state.issuedasset.name}</ListGroupItem>
+                                </Row> 
+                                <Row>
+                                    <ListGroupItem  className="textAlignLeft">description      {this.state.issuedasset.description}</ListGroupItem>
+                                </Row>
+                                <Row>
+                                    <ListGroupItem  className="textAlignLeft">ownerAddress      {this.state.issuedasset.ownerAddress}</ListGroupItem>
+                                </Row>
+                                <Row>
+                                    <ListGroupItem  className="textAlignLeft">Total Supply     {this.state.issuedasset.totalSupply}</ListGroupItem>
+                                </Row>
+                                <Row>
+                                    <ListGroupItem  className="textAlignLeft">TRX Num      {this.state.issuedasset.trxNum}</ListGroupItem>
+                                </Row>
+                                <Row>
+                                    <ListGroupItem  className="textAlignLeft">URL      {this.state.issuedasset.url}</ListGroupItem>
+                                </Row>
+                                <Row>
+                                    <ListGroupItem  className="textAlignLeft">startTime      {this.state.issuedasset.startTime}</ListGroupItem>
+                                </Row>
+                                <Row>
+                                    <ListGroupItem  className="textAlignLeft">endTime      {this.state.issuedasset.endTime}</ListGroupItem>
+                                </Row>
+                                <Row>
+                                    <ListGroupItem  className="textAlignLeft">Vote Score      {this.state.issuedasset.voteScore}</ListGroupItem>
                                 </Row>
 
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">Latest Block Number</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem  className="textAlignLeft">{this.state.balance}</ListGroupItem>
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">Type</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem className="textAlignLeft">{this.state.account.type}</ListGroupItem>
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">latestoprationtime</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem className="textAlignLeft">{this.state.account.latestoprationtime}</ListGroupItem>
-                                    </Col>
-                                </Row>
-                            </ListGroup>*/}
+                            </ListGroup>
                     </Panel.Body>
                   </Panel>
-                </div>
+                
             </div>
         )
     }

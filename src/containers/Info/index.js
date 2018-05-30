@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Service from './../../components/utils/service.js';
 
 import './style.css';
+import './../../components/css/style.css';
 
 import {Panel, ListGroupItem, ListGroup, Row, Col} from 'react-bootstrap';
 
@@ -14,7 +15,6 @@ class Info extends Component {
         }
 
         this.getWitnessByAddress(props.match.params.witnessAddress);
-
     }
 
     getWitnessByAddress(address){

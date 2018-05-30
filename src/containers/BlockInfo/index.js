@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Service from './../../components/utils/service.js';
 
 import './style.css';
+import './../../components/css/style.css';
 
 import {Panel, ListGroupItem, ListGroup, Row, Col} from 'react-bootstrap';
 
@@ -15,34 +16,52 @@ class BlockInfo extends Component {
             block: {
                 transactions:[]
             },
-            nextPage: false
+            blockLeft: false,
+            blockRight: false
         }
 
         this.getBlockByNumber(props.match.params.blockNum);
 
         this.handleClickLeft = this.handleClickLeft.bind(this);
         this.handleClickRight = this.handleClickRight.bind(this);
-
     }
 
     getBlockByNumber(number){
         var that = this;
-
 
         var service = new Service();
         var dataPromise = service.getEntity("blocks", number, "number");
         dataPromise.done(function(dataFromPromise) {
             that._setBlockState(dataFromPromise);
         });
+    }
 
+    checkNextBlockByNumber(number, flag){
+        var that = this;
+
+        var service = new Service();
+        var dataPromise = service.getEntity("blocks", number, "number");
+        dataPromise.done(function(dataFromPromise) {
+            if(dataFromPromise.hits.hits[0] != undefined){
+                if(flag){
+                    that.state.blockLeft = true;
+                } else {
+                    that.state.blockRight = true;
+                }
+            }
+        });
     }
 
     handleClickLeft(){
-        this.getBlockByNumber(this.state.block.number+1);
+        if(this.state.blockLeft){
+            this.getBlockByNumber(this.state.block.number+1);
+        }
     }
 
     handleClickRight(){
-        this.getBlockByNumber(this.state.block.number-1);
+        if(this.state.blockRight){
+            this.getBlockByNumber(this.state.block.number-1);
+        }
     }
 
     //docker run -p 50051:50051 -it tronnode /bin/bash -c 'cd build/libs; java -jar java-tron.jar'
@@ -52,7 +71,12 @@ class BlockInfo extends Component {
             block: blockEntity.hits.hits[0]._source
         }); 
 
-        console.log(this.state.block.transactions);
+        this.state.blockLeft = false;
+        this.state.blockRight = false;
+
+
+        this.checkNextBlockByNumber(this.state.block.number+1, true)
+        this.checkNextBlockByNumber(this.state.block.number-1, false)
     }
 
     render(){
@@ -134,11 +158,6 @@ class TransactionsPanel extends React.Component {
 
     _transformData(){
         this.state.transactions = Object.assign([],this.props.transactions);
-        console.log(this.state.transactions)
-
-        // this.setState({
-        //     transactions: test
-        // }); 
     }
 
     render(){
@@ -158,7 +177,7 @@ class TransactionsPanel extends React.Component {
                         {
                             this.state.transactions.map((transaction, index) => {
                                 var output =
-                                <tr key={transaction.amount}>
+                                <tr key={index}>
                                     <td>{index+1}</td>
                                     <td>{transaction.toaddress}</td>
                                     <td>{transaction.fromaddress}</td>
