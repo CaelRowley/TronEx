@@ -13,8 +13,6 @@ class AccountInfo extends Component {
             account: props
         }
 
-        console.log(props.match.params)
-
         this.getAccountByAddress(props.match.params.accountAddress);
 
     }
