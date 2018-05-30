@@ -37,89 +37,41 @@ class Info extends Component {
     render(){
         return(
             <div>
-            <Row className="padding boarder-bottom-tron">
-                <Col xs={12} md={8}>
-                {/*<div></div>*/}
-                </Col>
-                <Col xs={6} md={4}>
-                    <input 
-                            type="submit"
-                            value="Search"
-                            className="btn btn-light rightAlign"
-                            placeholder=""
-                        />
-                 </Col>
-            </Row>
+
+                <ul className="infoAppUlHeader">
+                    <li className="infoLiHeaderTextPadding">_FHFHFGSDRGAD</li>
+                </ul>
 
                 <div className="padding">
-                  <Panel className="greyPanelHeader">
-                    <Panel.Heading>Witness</Panel.Heading>
-                    <Panel.Body>
-                            <ListGroup>
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">Address</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem className="textAlignLeft">{this.state.witness.address}</ListGroupItem>
-                                    </Col>
-                                </Row>
+                    <Panel className="greyPanelHeader panelOpac">
+                      <Panel.Heading>Representative</Panel.Heading>
+                      <Panel.Body>
+                              <ListGroup>
+                                  <Row>
+                                      <ListGroupItem className="textAlignLeft">Address: {this.state.witness.address}</ListGroupItem>
+                                  </Row>
+                                  <Row>
+                                      <ListGroupItem  className="textAlignLeft">Latest Block Number: {this.state.witness.latestBlockNum}</ListGroupItem>
+                                  </Row>
+                                  <Row>
+                                      <ListGroupItem  className="textAlignLeft">Latest Slot Number: {this.state.witness.latestsLotNum}</ListGroupItem>
+                                  </Row>
+                                  <Row>
+                                      <ListGroupItem  className="textAlignLeft">Total Missed: {this.state.witness.totalMissed}</ListGroupItem>
+                                  </Row>
+                                  <Row>
+                                      <ListGroupItem  className="textAlignLeft">Total Produced: {this.state.witness.totalProduced}</ListGroupItem>
+                                  </Row>
+                                  <Row>
+                                      <ListGroupItem  className="textAlignLeft">URL: {this.state.witness.url}</ListGroupItem>
+                                  </Row>
+                                  <Row>
+                                      <ListGroupItem  className="textAlignLeft">Vote Count: {this.state.witness.voteCount}</ListGroupItem>
+                                  </Row>
 
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">Latest Block Number</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem  className="textAlignLeft">{this.state.witness.latestBlockNum}</ListGroupItem>
-                                    </Col>
-                                </Row>
+                              </ListGroup>
 
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">Latest Slot Number</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem className="textAlignLeft">{this.state.witness.latestsLotNum}</ListGroupItem>
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">Total Missed</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem className="textAlignLeft">{this.state.witness.totalMissed}</ListGroupItem>
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">Total Produced</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem className="textAlignLeft">{this.state.witness.totalProduced}</ListGroupItem>
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">URL</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem className="textAlignLeft"> {this.state.witness.url}</ListGroupItem>
-                                    </Col>
-                                </Row>
-
-                                <Row>
-                                    <Col md={6}>
-                                         <ListGroupItem className="textAlignRight">Vote Count</ListGroupItem>
-                                    </Col>
-                                    <Col md={6}>
-                                        <ListGroupItem className="textAlignLeft">{this.state.witness.voteCount}</ListGroupItem>
-                                    </Col>
-                                </Row>
-                            </ListGroup>
-                    </Panel.Body>
+                      </Panel.Body>
                   </Panel>
                 </div>
             </div>

@@ -72,7 +72,6 @@ class Nodes extends Component {
                                     <MenuItem eventKey="country" onSelect={this.handleDropDownChange}>Country</MenuItem>
                                     <MenuItem eventKey="city" onSelect={this.handleDropDownChange}>City</MenuItem>
                                     <MenuItem eventKey="countryname" onSelect={this.handleDropDownChange}>Country Name</MenuItem>
-                                    <MenuItem eventKey="region" onSelect={this.handleDropDownChange}>Region</MenuItem>
                                     {/*<MenuItem divider />
                                     <MenuItem eventKey="4">Separated link</MenuItem>*/}
                                 </DropdownButton>
@@ -123,7 +122,6 @@ class WitnessTable extends React.Component {
                         <th className="tableTitle textAlignCenter">Country</th>
                         <th className="tableTitle textAlignCenter">City</th>
                         <th className="tableTitle textAlignCenter">Country Name</th>
-                        <th className="tableTitle textAlignCenter">Region</th>
                     </tr>
                     {
                         this.props.nodes.map((nodes, index) => {
@@ -134,7 +132,6 @@ class WitnessTable extends React.Component {
                                 <td>{nodes._source.country}</td>
                                 <td>{nodes._source.city}</td>
                                 <td>{nodes._source.countryname}</td>
-                                <td>{nodes._source.region}</td>
                             </tr>
                             return output;
                         })
