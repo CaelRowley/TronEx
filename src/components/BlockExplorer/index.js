@@ -11,6 +11,9 @@ import Nodes from './../Nodes';
 import Info from './../../containers/Info'
 import AccountInfo from './../../containers/AccountInfo'
 
+import BlockInfo from './../../containers/BlockInfo'
+import IssuedAssetInfo from './../../containers/IssuedAssetInfo'
+
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class BlockExplorer extends Component {
@@ -141,7 +144,6 @@ class BlockExplorer extends Component {
           <Router>
             <div>
               <div className="Othercontainer">
-
                   <ul className="blockExplorerUl">
                       <li className={this.findLiBlocksState()}><Link onClick={this.toggleBlocksClass} className={this.state.blocksSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/block">Blocks</Link></li>
                       <li className={this.findLiAccountsState()}><Link onClick={this.toggleAccountsClass} className={this.state.accountsSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/account">Accounts</Link></li>
@@ -149,8 +151,6 @@ class BlockExplorer extends Component {
                       <li className={this.findLiAssetsState()}><Link onClick={this.toggleAssetsClass} className={this.state.assetsSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/issuedassets">Assets</Link></li>
                       <li className={this.findLiNodesState()}><Link onClick={this.toggleNodesClass} className={this.state.nodesSelected ? 'blockExplorerNavLinkSelected': 'blockExplorerNavLink'} to="/blockchainexplorer/nodes">Nodes</Link></li>
                   </ul>
-
-
               </div>
               <Route exact path="/blockchainexplorer/account" component={Account}/>
               <Route exact path="/blockchainexplorer/witness" component={Witness}/>
@@ -158,9 +158,12 @@ class BlockExplorer extends Component {
               <Route exact path="/blockchainexplorer/block" component={Block}/>
               <Route exact path="/blockchainexplorer/nodes" component={Nodes}/>
 
-
               <Route exact path="/blockchainexplorer/witness/:witnessAddress" component={Info}/>
               <Route exact path="/blockchainexplorer/account/:accountAddress" component={AccountInfo}/>
+              <Route path="/blockchainexplorer/block/:blockNum" component={BlockInfo}/>
+              <Route exact path="/blockchainexplorer/issuedassets/:name" component={IssuedAssetInfo}/>
+
+
             </div>
           </Router>
     );

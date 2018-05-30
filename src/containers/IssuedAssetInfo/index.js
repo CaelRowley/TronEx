@@ -5,33 +5,35 @@ import './style.css';
 
 import {Panel, ListGroupItem, ListGroup, Row, Col} from 'react-bootstrap';
 
-class AccountInfo extends Component {
+class IssuedAssetInfo extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            account: props
+            issuedasset: props
         }
 
-        this.getAccountByAddress(props.match.params.accountAddress);
+        this.getIssuedAssetByName(props.match.params.name);
 
     }
 
-    getAccountByAddress(address){
+    getIssuedAssetByName(name){
         var that = this;
 
         var service = new Service();
-        var dataPromise = service.getEntity("accounts", address, "address");
+        var dataPromise = service.getEntity("issuedassets", name, "name");
         dataPromise.done(function(dataFromPromise) {
-            that._setAccountState(dataFromPromise);
+            that._setBlockState(dataFromPromise);
         });
 
     }
+    //docker run -p 50051:50051 -it tronnode /bin/bash -c 'cd build/libs; java -jar java-tron.jar'
 
-    _setAccountState(accountEntity){
+    _setBlockState(issuedassetEntity){
         this.setState({
-            account:accountEntity.hits.hits[0]._source
+            issuedasset:issuedassetEntity.hits.hits[0]._source
         });
+        console.log(this.state.issuedasset);  
     }
 
     render(){
@@ -51,11 +53,11 @@ class AccountInfo extends Component {
                  </Col>
             </Row>
 
-                <div className="padding">
+                <div className="">
                   <Panel className="greyPanelHeader">
-                    <Panel.Heading>Account</Panel.Heading>
+                    <Panel.Heading>Token</Panel.Heading>
                     <Panel.Body>
-                            <ListGroup>
+                            {/*<ListGroup>
                                 <Row>
                                     <Col md={6}>
                                          <ListGroupItem className="textAlignRight">Address</ListGroupItem>
@@ -91,7 +93,7 @@ class AccountInfo extends Component {
                                         <ListGroupItem className="textAlignLeft">{this.state.account.latestoprationtime}</ListGroupItem>
                                     </Col>
                                 </Row>
-                            </ListGroup>
+                            </ListGroup>*/}
                     </Panel.Body>
                   </Panel>
                 </div>
@@ -100,4 +102,4 @@ class AccountInfo extends Component {
     }
 }
 
-export default AccountInfo;
+export default IssuedAssetInfo;

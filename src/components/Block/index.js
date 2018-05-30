@@ -48,6 +48,8 @@ class Block extends Component {
         var dataPromise = service.getEntity(type, filter, field);
         dataPromise.done(function(dataFromPromise) {
             that._displayResponse(dataFromPromise);
+        }).catch(function(err){
+            console.log(err);
         });
     }
 
@@ -55,8 +57,6 @@ class Block extends Component {
     	this.setState({
             blocks:response.hits.hits
         });
-
-        console.log(this.state.blocks);
     }
 
 	render() {
@@ -125,23 +125,26 @@ class BlockTable extends React.Component {
             <table id="blockTable" className="tableWidth">
                 <tbody>
                     <tr>
-                        <th className="tableTitle textAlignCenter">Number</th>
-                        <th className="tableTitle textAlignCenter">Hash</th>
-                        <th className="tableTitle textAlignCenter">Parent Hash</th>
+                        <th className="tableTitle textAlignCenter">Height</th>
+                        <th className="tableTitle textAlignCenter">Number of Trans.</th>
+                        <th className="tableTitle textAlignCenter">Total Trans.</th>
+                        {/*<th className="tableTitle textAlignCenter">Hash</th>
+                        <th className="tableTitle textAlignCenter">Parent Hash</th>*/}
                         <th className="tableTitle textAlignCenter">Witness Address</th>
-                        <th className="tableTitle textAlignCenter">Transactions Count</th>
-                        <th className="tableTitle textAlignCenter">Total Transactions</th>
+                        <th className="tableTitle textAlignCenter">Time</th>
+                        
                     </tr>
                     {
                         this.props.blocks.map((blocks, index) => {
+                            var timeCreated = new Date(blocks._source.time).toDateString();
                             var output =
                             <tr key={blocks._source.number}>
                                 <td><Link className="tableLink" to={`/blockchainexplorer/block/${blocks._source.number}`}>{blocks._source.number}</Link></td>
-                                <td>{blocks._source.hash}</td>
-                                <td>{blocks._source.parentHash}</td>
-                                <td>{blocks._source.witnessAddress}</td>
                                 <td>{blocks._source.transactionsCount}</td>
                                 <td>{blocks._source.transactionsTotal}</td>
+                                <td><Link className="tableLink" to={`/blockchainexplorer/witness/${blocks._source.witnessAddress}`}>{blocks._source.witnessAddress}</Link></td>
+                                
+                                <td>{timeCreated}</td>
                             </tr>
                             return output;
                         })
