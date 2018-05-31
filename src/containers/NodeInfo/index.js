@@ -58,7 +58,13 @@ class NodeInfo extends Component {
                                       <ListGroupItem  className="textAlignLeft">City: {this.state.node.city}</ListGroupItem>
                                   </Row>
                                   <Row>
-                                      <ListGroupItem  className="textAlignLeft">Country: {this.state.node.countryname} ({this.state.node.country})</ListGroupItem>
+                                      <ListGroupItem  className="textAlignLeft">Region: {this.state.node.regioncode}</ListGroupItem>
+                                  </Row>
+                                  <Row>
+                                      <ListGroupItem  className="textAlignLeft">Country: {this.state.node.countryname}</ListGroupItem>
+                                  </Row>
+                                  <Row>
+                                      <ListGroupItem  className="textAlignLeft">Continent: {this.state.node.continentcode}</ListGroupItem>
                                   </Row>
                               </ListGroup>
 
