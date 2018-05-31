@@ -12,8 +12,8 @@ background-color: #ffcc99; */
 
 .backGround{
   background:
-    /* url("./tronWallPaperCatTron.gif") */
-    url("TronExWallPaper.jpg")
+    url("./tronWallPaperCatTron.gif")
+    /* url("TronExWallPaper.jpg") */
     no-repeat
     center center
     fixed;

@@ -48,7 +48,7 @@ class Account extends Component {
                             <Col xs={12} md={8} >
                                 <div className="leftAlign dropDown">
                                     <DropdownButton
-                                            classname="dropDown"
+                                            className="dropDown"
                                             title={this.state.dropdown}
                                             key={"asd"}
                                             id={"type"}
