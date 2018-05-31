@@ -43,11 +43,14 @@ class Nodes extends Component {
     getNodes(type, filter, field){
         var that = this;
 
-        var service = new Service();
-        var dataPromise = service.getEntity(type, filter, field);
-        dataPromise.done(function(dataFromPromise) {
-            that._displayResponse(dataFromPromise);
-        });
+		var service = new Service();
+		var dataPromise = service.countEntity("nodes");
+		dataPromise.done(function(dataFromPromise) {
+            var dataPromise2 = service.getEntityAmount(type, filter, field, dataFromPromise.count);
+            dataPromise2.done(function(dataFromPromise) {
+                that._displayResponse(dataFromPromise);
+            });
+		});
     }
 
     _displayResponse(response){

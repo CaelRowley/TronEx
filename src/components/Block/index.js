@@ -53,16 +53,6 @@ class Block extends Component {
         this.getBlocks("blocks", this.state.searchbar, this.state.dropdown);
     }
 
-	getBlocks(type, filter, field){
-		var that = this;
-
-		var service = new Service();
-		var dataPromise = service.getEntity(type, filter, field);
-		dataPromise.done(function(dataFromPromise) {
-			that._displaySearch(dataFromPromise);
-		});
-	}
-
 	getFirstPage(entity, filter){
 		var that = this;
 		this.setState({
@@ -279,7 +269,7 @@ class BlockTable extends React.Component {
                         <th className="tableTitle textAlignCenter">Parent Hash</th>*/}
                         <th className="tableTitle textAlignCenter">Witness Address</th>
                         <th className="tableTitle textAlignCenter">Time</th>
-                        
+
                     </tr>
                     {
                         this.props.blocks.map((blocks, index) => {
@@ -290,7 +280,7 @@ class BlockTable extends React.Component {
                                 <td>{blocks._source.transactionsCount}</td>
                                 <td>{blocks._source.transactionsTotal}</td>
                                 <td><Link className="tableLink" to={`/blockchainexplorer/witness/${blocks._source.witnessAddress}`}>{blocks._source.witnessAddress}</Link></td>
-                                
+
                                 <td>{timeCreated}</td>
                             </tr>
                             return output;
