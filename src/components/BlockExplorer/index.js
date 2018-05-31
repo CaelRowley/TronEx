@@ -13,6 +13,7 @@ import AccountInfo from './../../containers/AccountInfo'
 
 import BlockInfo from './../../containers/BlockInfo'
 import IssuedAssetInfo from './../../containers/IssuedAssetInfo'
+import NodeInfo from './../../containers/NodeInfo'
 
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
@@ -162,6 +163,7 @@ class BlockExplorer extends Component {
               <Route exact path="/blockchainexplorer/account/:accountAddress" component={AccountInfo}/>
               <Route path="/blockchainexplorer/block/:blockNum" component={BlockInfo}/>
               <Route exact path="/blockchainexplorer/issuedassets/:name" component={IssuedAssetInfo}/>
+              <Route exact path="/blockchainexplorer/nodes/:nodeip" component={NodeInfo}/>
 
 
             </div>
