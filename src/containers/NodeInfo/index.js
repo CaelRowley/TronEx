@@ -60,10 +60,6 @@ class NodeInfo extends Component {
                                   <Row>
                                       <ListGroupItem  className="textAlignLeft">Country: {this.state.node.countryname} ({this.state.node.country})</ListGroupItem>
                                   </Row>
-                                  <Row>
-                                      <ListGroupItem  className="textAlignLeft">Continent code: {this.state.node.continentcode}</ListGroupItem>
-                                  </Row>
-
                               </ListGroup>
 
                       </Panel.Body>

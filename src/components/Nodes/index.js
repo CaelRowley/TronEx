@@ -124,7 +124,6 @@ class WitnessTable extends React.Component {
                         <th className="tableTitle textAlignCenter">Host</th>
                         <th className="tableTitle textAlignCenter">Country</th>
                         <th className="tableTitle textAlignCenter">City</th>
-                        <th className="tableTitle textAlignCenter">Country Name</th>
                     </tr>
                     {
                         this.props.nodes.map((nodes, index) => {
@@ -132,9 +131,8 @@ class WitnessTable extends React.Component {
                             <tr key={nodes._source.host}>
                                 <td className="tableRowHeight">{index +1}</td>
                                 <td><Link className="tableLink" to={`/blockchainexplorer/nodes/${nodes._source.host}`}>{nodes._source.host}</Link></td>
-                                <td>{nodes._source.country}</td>
+                                <td>{nodes._source.countryname} ({nodes._source.country})</td>
                                 <td>{nodes._source.city}</td>
-                                <td>{nodes._source.countryname}</td>
                             </tr>
                             return output;
                         })
