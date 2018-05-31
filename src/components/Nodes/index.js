@@ -122,7 +122,9 @@ class WitnessTable extends React.Component {
                     <tr>
                         <th className="tableTitle textAlignCenter">#</th>
                         <th className="tableTitle textAlignCenter">Host</th>
+                        <th className="tableTitle textAlignCenter">Continent</th>
                         <th className="tableTitle textAlignCenter">Country</th>
+                        <th className="tableTitle textAlignCenter">Region</th>
                         <th className="tableTitle textAlignCenter">City</th>
                     </tr>
                     {
@@ -131,7 +133,9 @@ class WitnessTable extends React.Component {
                             <tr key={nodes._source.host}>
                                 <td className="tableRowHeight">{index +1}</td>
                                 <td><Link className="tableLink" to={`/blockchainexplorer/nodes/${nodes._source.host}`}>{nodes._source.host}</Link></td>
-                                <td>{nodes._source.countryname} ({nodes._source.country})</td>
+                                <td>{nodes._source.continentcode}</td>
+                                <td>{nodes._source.countryname}</td>
+                                <td>{nodes._source.regioncode}</td>
                                 <td>{nodes._source.city}</td>
                             </tr>
                             return output;
