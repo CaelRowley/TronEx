@@ -81,7 +81,7 @@ class Visualisation extends Component {
                         <tbody>
                             <tr className="visualisationGraphTr">
                                 <td className="visualisationGraphTd" onClick={this.toggle1}><img src={graphBlocks} alt="Transactions Dashboard" className="centerAlign visSizeImage"/><br/>Blocks Dashboard</td>
-                                <td className="visualisationGraphTd" onClick={this.toggle2}><img src={graphWitnesses} alt="Representatives Dashboard" className="centerAlign visSizeImage"/><br/>Witnesses Dashboard</td>
+                                <td className="visualisationGraphTd" onClick={this.toggle2}><img src={graphWitnesses} alt="Representatives Dashboard" className="centerAlign visSizeImage"/><br/>Representatives Dashboard</td>
                             </tr>
                             <tr className="visualisationGraphTr">
                                 <td className="visualisationGraphTd" onClick={this.toggle3}><img src={graphMap} alt="Nodes Dashboard" className="centerAlign visSizeImage"/><br/>Nodes Dashboard</td>
