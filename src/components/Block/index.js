@@ -273,7 +273,8 @@ class BlockTable extends React.Component {
                     </tr>
                     {
                         this.props.blocks.map((blocks, index) => {
-                            var timeCreated = new Date(blocks._source.time).toDateString();
+                            var timeCreated = new Date(blocks._source.time).toString();
+							timeCreated = timeCreated.substring(0, timeCreated.length - 15);
                             var output =
                             <tr key={blocks._source.number}>
                                 <td><Link className="tableLink" to={`/blockchainexplorer/block/${blocks._source.number}`}>{blocks._source.number}</Link></td>
